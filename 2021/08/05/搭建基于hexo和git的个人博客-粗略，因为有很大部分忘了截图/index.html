@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="搭建个人博客  很早以前就一直想搞一个自己的博客，上网搜了搜发现只能去租用服务器或者用git搭建，本着能白嫖就白嫖的原则，我还是选择了用hexo搭建自己的博客，虽然没啥相关基础，鼓捣几天也是给鼓捣出来了，在此感谢CSDN以及网上提供相关教学以及问题解答的前辈们，虽然我还是犯了不少没有记载的错（笑），那么本文就偏向简单的流程介绍以及更多的是我犯的数不胜数的错误介绍吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建基于hexo和git的个人博客(粗略，因为忘了截图)">
+<meta property="og:url" content="http://example.com/2021/08/05/%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ehexo%E5%92%8Cgit%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%B2%97%E7%95%A5%EF%BC%8C%E5%9B%A0%E4%B8%BA%E6%9C%89%E5%BE%88%E5%A4%A7%E9%83%A8%E5%88%86%E5%BF%98%E4%BA%86%E6%88%AA%E5%9B%BE/index.html">
+<meta property="og:site_name" content="Tr1ck amor">
+<meta property="og:description" content="搭建个人博客  很早以前就一直想搞一个自己的博客，上网搜了搜发现只能去租用服务器或者用git搭建，本着能白嫖就白嫖的原则，我还是选择了用hexo搭建自己的博客，虽然没啥相关基础，鼓捣几天也是给鼓捣出来了，在此感谢CSDN以及网上提供相关教学以及问题解答的前辈们，虽然我还是犯了不少没有记载的错（笑），那么本文就偏向简单的流程介绍以及更多的是我犯的数不胜数的错误介绍吧。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-05T07:01:47.000Z">
+<meta property="article:modified_time" content="2021-08-06T08:46:33.034Z">
+<meta property="article:author" content="Tr1ck">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/08/05/%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ehexo%E5%92%8Cgit%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%B2%97%E7%95%A5%EF%BC%8C%E5%9B%A0%E4%B8%BA%E6%9C%89%E5%BE%88%E5%A4%A7%E9%83%A8%E5%88%86%E5%BF%98%E4%BA%86%E6%88%AA%E5%9B%BE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>搭建基于hexo和git的个人博客(粗略，因为忘了截图) | Tr1ck amor</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <script src="/live2d-widget/autoload.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Tr1ck amor</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/05/%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8Ehexo%E5%92%8Cgit%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%B2%97%E7%95%A5%EF%BC%8C%E5%9B%A0%E4%B8%BA%E6%9C%89%E5%BE%88%E5%A4%A7%E9%83%A8%E5%88%86%E5%BF%98%E4%BA%86%E6%88%AA%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/image1.jpg">
+      <meta itemprop="name" content="Tr1ck">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tr1ck amor">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          搭建基于hexo和git的个人博客(粗略，因为忘了截图)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-05 15:01:47" itemprop="dateCreated datePublished" datetime="2021-08-05T15:01:47+08:00">2021-08-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-06 16:46:33" itemprop="dateModified" datetime="2021-08-06T16:46:33+08:00">2021-08-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1><span id="da-jian-ge-ren-bo-ke">搭建个人博客</span><a href="#da-jian-ge-ren-bo-ke" class="header-anchor">#</a></h1><p>  很早以前就一直想搞一个自己的博客，上网搜了搜发现只能去租用服务器或者用git搭建，本着能白嫖就白嫖的原则，我还是选择了用hexo搭建自己的博客，虽然没啥相关基础，鼓捣几天也是给鼓捣出来了，在此感谢CSDN以及网上提供相关教学以及问题解答的前辈们，<del>虽然我还是犯了不少没有记载的错（笑）</del>，那么本文就偏向简单的流程介绍以及更多的是我犯的数不胜数的错误介绍吧。</p>
+<span id="more"></span>
+
+<p>  <del>这事其实我一周以前就差不多做好了（笑），但是我一懒狗把博客拖到现在写</del></p>
+<p>  <del>这删除号真好玩</del></p>
+<p>  因为是头一次搞这些涉及网页的东西，全程有些手忙脚乱的，有些也忘记截图了，在此只能提供大概搭建流程以及我遇到的一部分问题。<del>我还真是把网上有的没的问题全犯了一遍</del></p>
+<p>  那么，正文开始。</p>
+<h2><span id="jian-dan-de-da-jian-liu-cheng">简单的搭建流程</span><a href="#jian-dan-de-da-jian-liu-cheng" class="header-anchor">#</a></h2><h3><span id="zhun-bei-gong-zuo">准备工作</span><a href="#zhun-bei-gong-zuo" class="header-anchor">#</a></h3><p>  首先你需要一个git的账号，很多人都以为github是被墙了，但其实是可以直连的，就是需要多刷新几次。注册完之后需要下载你相应的系统的客户端（比如我就是windows git）然后完成对git的配置，在此不进行详细的叙述，在CSDN的<a target="_blank" rel="noopener" href="https://blog.csdn.net/hutongxue434/article/details/106181590?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162823388216780262551272%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=162823388216780262551272&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-106181590.first_rank_v2_pc_rank_v29&utm_term=%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2&spm=1018.2226.3001.4187">这篇博客</a>中有具体的叙述。</p>
+<p>  在配置完成后，要进行nodejs的<a target="_blank" rel="noopener" href="https://nodejs.org/">下载安装</a>  我下载的是LTS的，安装完之后可以用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>  检验是否安装成功，如果出现版本号，安装成功。之后还需要一个markdown语言编辑器，我用的是typora，如果你习惯用记事本也可以。</p>
+<h3><span id="kai-shi-da-jian-bo-ke">开始搭建博客</span><a href="#kai-shi-da-jian-bo-ke" class="header-anchor">#</a></h3><p>  先在cmd安装cnpm工具，然后安装hexo。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>  之后可以用<code>hexo -v</code>进行验证，若出现版本号，成功。</p>
+<p>  打开git客户端(git bash)，用cd命令进入你想要创建blog文件夹的目录，然后<code>mkdir blog</code>建立blog文件夹(若搭建过程中出错可以删了blog重新建立，从头再来)。</p>
+<p>  hexo初始化blog</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#在blog文件夹hexo初始化</span><br><span class="line">cd blog/</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>  执行完在你的blog文件夹会生成乱七八糟的一堆文件。</p>
+<p>  启动你刚搭建的博客试试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#使用后会生成一个http://localhost:4000地址，在本机浏览器输入即可进入你初始化的博客浏览</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<h3><span id="ba-ni-de-hexo-bu-shu-dao-github-shang">把你的hexo部署到github上</span><a href="#ba-ni-de-hexo-bu-shu-dao-github-shang" class="header-anchor">#</a></h3><p>  在你的github新建一个仓库(Repository)，这个仓库要用<strong>你的Github账户名.github.io</strong>来命名。回到cmd窗口，cd到blog目录下，安装git部署插件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<p>  然后在blog目录中找到**_config.yml**文件并编辑它，找到如下内容，修改如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: 这里的地址就是你刚刚创建的仓库的地址，即：https://github.com/你的Github名/你的Github名.github.io.git 这种格式</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>这里的type，repo和branch之后都需要空格才能生效。</strong></p>
+<p>  最后在cmd部署到远端</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>  这里应该会跳出来窗口要你输入你的github名字跟密码。</p>
+<p>  然后你就可以在浏览器用<strong>https://你的Github账户名.github.io</strong>的格式来访问你的博客了，博客的初步搭建完成。</p>
+<h2><span id="zhong-jian-yu-dao-de-wen-ti-men">中间遇到的问题们</span><a href="#zhong-jian-yu-dao-de-wen-ti-men" class="header-anchor">#</a></h2><ol>
+<li>好多时候你可能遇到这个东西，<del>这玩意可是烦死我了</del>。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL SSL_read: Connection was reset, errno 10054  </span><br></pre></td></tr></table></figure>
+
+<p>  首先，这个问题，十分有可能锅不在你，是网络波动造成的。遇到这个玩意你多试几遍，如果还是不行，可以打开git bash尝试执行以下命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure>
+
+<p>  然后在进行相关操作，十有八九就没问题了。</p>
+<p>  2.我在搭建过程中犯了个特别蠢的错误，也可能是因为我对github的仓库不够熟悉吧，我把仓库建立在main主枝上面，然后建立了个分枝叫master，<del>蠢到家了</del>，造成远端搭建始终出问题，在找了很久问题之后进我的github仓库界面偶尔发现了这个蠢问题，合并主枝分枝改名为master后问题成功解决。</p>
+<p>  3.另一个蛮常见的问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: unable to access &#x27;https://github.com/.../.git&#x27;: Could not resolve host: github.com</span><br></pre></td></tr></table></figure>
+
+<p>  只需要在执行如下命令之后重试即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy </span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<p>  4.发生<code>error：spawn failed</code>错误。问题大多是因为<code>git</code>进行<code>push</code>或者<code>hexo d</code>的时候改变了一些<code>.deploy_git</code>文件下的内容。解决办法也很简单，只需要进入你的blog文件夹下面，删除你的<code>.deploy_git</code>文件夹，输入<code>git config --global core.autocrlf false</code>然后依次执行clean,g,d代码即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>我所遇到的问题大概就是这些，<del>其实有一些问题我遇到了之后第二天稀里糊涂就好了，我也没办法在这里做出什么解答</del>。关于hexo博客的美化推荐CSDN<a target="_blank" rel="noopener" href="https://blog.csdn.net/Awt_FuDongLai/article/details/107341035">这篇博客</a>和<a target="_blank" rel="noopener" href="https://blog.csdn.net/awt_fudonglai/category_10191857.html?spm=1001.2014.3001.5515">他的hexo专栏</a>，写得很不错，我实力有限还在学习阶段，再次感谢CSDN提供教学的各位dalao们。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/23/my-new-post/" rel="prev" title="my new post">
+      <i class="fa fa-chevron-left"></i> my new post
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/04/%E7%BB%83%E6%89%8B%E5%B0%8F%E9%A1%B9%E7%9B%AE-%E4%BD%BF%E7%94%A8python3%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%9E%8B%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" rel="next" title="练手小项目:使用python3构建一个小型文本编辑器">
+      练手小项目:使用python3构建一个小型文本编辑器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">搭建个人博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">简单的搭建流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.2.</span> <span class="nav-text">开始搭建博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.3.</span> <span class="nav-text">把你的hexo部署到github上</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">中间遇到的问题们</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tr1ck"
+      src="/images/image1.jpg">
+  <p class="site-author-name" itemprop="name">Tr1ck</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tr1ck</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="true"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

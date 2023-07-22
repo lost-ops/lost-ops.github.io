@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="武汉理工大学大数据模式与架构期末复习(按知识点删减版)  在发现学长学姐们上一届是大作业结课而我们是考试结课之后整理复习的结果，可能不会很全，感觉最后老师稍微划知识点的时候没有为难我们()，总之大体是这么些考试内容，也不知道后面几届会不会改内容，要是全考内容确实太多了。总之看到网上没有相关复习拉上来做个备份。代码算法部分没有列出，重点大概为网络爬虫，跳表布隆过滤器和MapReduce的算法，稍微上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="武汉理工大学大数据模式与架构期末复习(按知识点删减版)">
+<meta property="og:url" content="http://example.com/2021/12/31/%E6%AD%A6%E6%B1%89%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%9E%B6%E6%9E%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0-%E6%8C%89%E7%9F%A5%E8%AF%86%E7%82%B9%E5%88%A0%E5%87%8F%E7%89%88/index.html">
+<meta property="og:site_name" content="Tr1ck amor">
+<meta property="og:description" content="武汉理工大学大数据模式与架构期末复习(按知识点删减版)  在发现学长学姐们上一届是大作业结课而我们是考试结课之后整理复习的结果，可能不会很全，感觉最后老师稍微划知识点的时候没有为难我们()，总之大体是这么些考试内容，也不知道后面几届会不会改内容，要是全考内容确实太多了。总之看到网上没有相关复习拉上来做个备份。代码算法部分没有列出，重点大概为网络爬虫，跳表布隆过滤器和MapReduce的算法，稍微上">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-31T07:25:07.000Z">
+<meta property="article:modified_time" content="2021-12-31T08:30:37.636Z">
+<meta property="article:author" content="Tr1ck">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/12/31/%E6%AD%A6%E6%B1%89%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%9E%B6%E6%9E%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0-%E6%8C%89%E7%9F%A5%E8%AF%86%E7%82%B9%E5%88%A0%E5%87%8F%E7%89%88/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>武汉理工大学大数据模式与架构期末复习(按知识点删减版) | Tr1ck amor</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <script src="/live2d-widget/autoload.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Tr1ck amor</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/31/%E6%AD%A6%E6%B1%89%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%9E%B6%E6%9E%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0-%E6%8C%89%E7%9F%A5%E8%AF%86%E7%82%B9%E5%88%A0%E5%87%8F%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/image1.jpg">
+      <meta itemprop="name" content="Tr1ck">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tr1ck amor">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          武汉理工大学大数据模式与架构期末复习(按知识点删减版)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-12-31 15:25:07 / Modified: 16:30:37" itemprop="dateCreated datePublished" datetime="2021-12-31T15:25:07+08:00">2021-12-31</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1><span id="wu-han-li-gong-da-xue-da-shu-ju-mo-shi-yu-jia-gou-qi-mo-fu-xi-an-zhi-shi-dian-shan-jian-ban">武汉理工大学大数据模式与架构期末复习(按知识点删减版)</span><a href="#wu-han-li-gong-da-xue-da-shu-ju-mo-shi-yu-jia-gou-qi-mo-fu-xi-an-zhi-shi-dian-shan-jian-ban" class="header-anchor">#</a></h1><p>  在发现学长学姐们上一届是大作业结课而我们是考试结课之后整理复习的结果，可能不会很全，感觉最后老师稍微划知识点的时候没有为难我们()，总之大体是这么些考试内容，也不知道后面几届会不会改内容，要是全考内容确实太多了。总之看到网上没有相关复习拉上来做个备份。代码算法部分没有列出，重点大概为网络爬虫，跳表布隆过滤器和MapReduce的算法，稍微上网查查就能找到代码，不再列出。文中有些地方让你去查ppt是当初粘的图片，问就是hexo懒得搞图片上传了。</p>
+<span id="more"></span> 
+
+<h1><span id="di-yi-zhang">第一章</span><a href="#di-yi-zhang" class="header-anchor">#</a></h1><h2><span id="da-shu-ju-gai-nian">大数据概念</span><a href="#da-shu-ju-gai-nian" class="header-anchor">#</a></h2><p>大数据是指以多元形式，自许多来源搜集而来的庞大数据组，往往具有实时性。在企业对企业销售的情况下，这些数据可能得自社交网络、电子商务网站、顾客来访纪录，还有许多其他来源。这些数据，并非公司顾客关系管理数据库的常态数据组。<br>大数据由算力提升（分布式Hadoop，HDFS，MapReduce并行计算，Spark，Storm与Impala），智能设备普及（智能）与存储成本下降（云计算）为技术支撑<br>大数据的意义1）有数据可说2）说数据可靠</p>
+<h2><span id="da-shu-ju-lai-yuan">大数据来源</span><a href="#da-shu-ju-lai-yuan" class="header-anchor">#</a></h2><p>由产生数据主体的划分，1）少量企业应用产生的数据2）大量人产生的数据3）巨量机器产生的数据<br>按数据来源行业划分，1）以BAT为代表的互联网公司2）电信、金融、保险、电力、石化系统3）公共安全、医疗、交通领域4）气象、地理、政务等领域5）制造业和其他传统行业<br>按数据的储存形式划分，结构化数据与非结构化数据<br>按常用的大数据采集途径划分，5）制造业和其他传统行业2）互联网数据采集3）APP移动端数据采集4）与数据服务机构进行合作</p>
+<h2><span id="da-shu-ju-de-te-zheng-ji-yi-yi">大数据的特征及意义</span><a href="#da-shu-ju-de-te-zheng-ji-yi-yi" class="header-anchor">#</a></h2><p>大数据3S 数据大小Size 数据处理速度Speed 数据结构化Structur（3s和3i都用来描述大数据）<br>从技术上看，大数据与云计算的关系就像一枚硬币的正反面一样密不可分。<br>大数据4V 价值高（Value）体量大（Volume）速度快（Velocity）种类多（Varity）<br>大数据3I 定义不明确的 充满各种挑战 需要缩短数据搜集到获得之间的时间</p>
+<h2><span id="da-shu-ju-de-biao-xian-xing-tai">大数据的表现形态</span><a href="#da-shu-ju-de-biao-xian-xing-tai" class="header-anchor">#</a></h2><p>大数据的表现形态 多源性 实时性 不确定性</p>
+<h2><span id="da-shu-ju-de-ying-yong-chang-jing">大数据的应用场景</span><a href="#da-shu-ju-de-ying-yong-chang-jing" class="header-anchor">#</a></h2><p>大数据的七个应用场景 环境，教育，医疗，农业，智慧城市，零售，金融<br>零售 一个层面是零售行业可以了解客户的消费喜好和趋势，进行商品的精准营销，降低营销成本。另一个层面是依据客户购买的产品，为客户提供可能购买的其他产品，扩大销售额，<br>金融 1）银行数据应用场景2）保险数据应用场景3）证券数据应用场景<br>医疗 医疗行业拥有大量的病例、病理报告、治愈方案、药物报告等，通过对这些数据进行整理和分析将会极大地辅助医生提出治疗方案，帮助病人早日康复。<br>教育 通过大数据的分析来优化教育机制，也可以作出更科学的决策<br>农业 借助于大数据提供的消费能力和趋势报告，政府可为农业生产进行合理引导，依据需求进行生产<br>环境 借助于大数据技术，天气预报的准确性和实效性将会大大提高，预报的及时性将会大大提升<br>智慧城市 大数据技术可以了解经济发展情况、各产业发展情况、消费支出和产品销售情况等，依据分析结果，科学地制定宏观政策</p>
+<h2><span id="da-shu-ju-de-fa-zhan-qu-shi-yu-kun-peng-da-shu-ju">大数据的发展趋势与鲲鹏大数据</span><a href="#da-shu-ju-de-fa-zhan-qu-shi-yu-kun-peng-da-shu-ju" class="header-anchor">#</a></h2><h3><span id="da-shu-ju-shi-dai">大数据时代</span><a href="#da-shu-ju-shi-dai" class="header-anchor">#</a></h3><p>欧美各国的大数据挑战和中国的大数据战略<br>大数据时代定义 大数据是指利用常用软件工具捕获、管理和处理数据所耗时间超过可容忍时间的数据集</p>
+<h3><span id="da-shu-ju-ji-suan-ren-wu-lei-xing">大数据计算任务类型</span><a href="#da-shu-ju-ji-suan-ren-wu-lei-xing" class="header-anchor">#</a></h3><p><strong>IO密集型任务</strong> CPU消耗很少，任务的大部分时间都在等待IO操作完成（因为IO的速度远远低于<br>CPU和内存的速度）。任务越多，CPU效率越高。因此提升网络传输效率和读写效率是重中之重。<br><strong>计算密集型任务</strong> 计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的 数量应当等于CPU的核心数。代码运行效率至关重要。<br><strong>数据密集型任务</strong> 数据密集型应用的特点主要是大量独立的数据分析处理作业可以分布在松耦合的计算机集群系统的不同节点上运行，高度密集的海量数据I/O吞吐需求，大部分数据密集型应用都有个数据流驱动的流程。</p>
+<h3><span id="da-shu-ju-de-zhu-yao-ji-suan-mo-shi">大数据的主要计算模式</span><a href="#da-shu-ju-de-zhu-yao-ji-suan-mo-shi" class="header-anchor">#</a></h3><p><strong>批处理计算</strong> 针对大规模数据的批量处理。主要技术有MapReduce、Spark等<br><strong>流计算</strong> 针对流数据的实时计算处理。主要技术：Spark、Storm、Flink、Flume、Dstream<br><strong>图计算</strong>  针对大规模图结构数据的处理。主要技术：GraphX、Gelly、Giraph、PowerGraph等<br>查询分析计算<br><strong>查询分析计算</strong> 大规模数据的存储管理和查询分析。主要技术：Hive、Impala、Dremel、Cassandra等</p>
+<h3><span id="qi-ye-mian-lin-de-tiao-zhan-yu-ji-yu">企业面临的挑战与机遇</span><a href="#qi-ye-mian-lin-de-tiao-zhan-yu-ji-yu" class="header-anchor">#</a></h3><p> 挑战一：业务部门无清晰的大数据需求挑战二：企业内部数据孤岛严重挑战三：数据可用性低，质量差挑战四：数据相关管理技术和架构挑战五：数据安全问题挑战六：大数据人才缺乏挑战七：数据开放与隐私的权衡<br>机遇一：大数据挖掘成为商业分析的核心机遇二：大数据成为信息技术应用的支撑点机遇三：大数据成为信息产业持续增长的新引擎</p>
+<h3><span id="kun-peng">鲲鹏</span><a href="#kun-peng" class="header-anchor">#</a></h3><p>优势1.以中国市场孵化和 完善行业应用，与 全球产业形成良性循环2.和ARM共享优势生 态，协同加速发展<br>整体架构 鲲鹏计算产业是基于Kunpeng处理器构建的全栈IT基础设施、行业应用及服务，包括PC、服务器、存储、操 作系统、中间件、虚拟化、数据库、云服务、行业应用以及咨询管理服务等。<br>鲲鹏云服务概述 华为云鲲鹏云服务基于鲲鹏处理器等多元基础设施, 涵盖裸机，虚机，容器等形态，具备多核高并发特点，非常适合AI、大数据、HPC、云手机/云游戏等场景。</p>
+<h3><span id="hua-wei-da-shu-ju-jie-jue-fang-an">华为大数据解决方案</span><a href="#hua-wei-da-shu-ju-jie-jue-fang-an" class="header-anchor">#</a></h3><p>BigData Pro 大数据解决方案 以可无限弹性扩容的鲲鹏算力作为计算资源，  以支持原生多协议的OBS对象存储服务为统一的存储数据湖，提供“存算分离、极致弹性、极 致高效”的全新公有云大数据解决方案<br>优势 高安全，高性能，高开放<br>MRS 是一个在华为云上部署和管理Hadoop系统的服务，一键即可完成部署Hadoop集群，轻松运行Hadoop、Spark、HBase、Kafka、Storm等大数据组件。其优势高性能易运维高安全低成本。应用场景海量数据离线分析场景，海量数据存储场景，低时延实时数据分析场景</p>
+<h1><span id="di-er-zhang-shu-ju-zhun-bei">第二章 数据准备</span><a href="#di-er-zhang-shu-ju-zhun-bei" class="header-anchor">#</a></h1><h2><span id="wang-ye-cai-ji-pa-chong">网页采集，爬虫</span><a href="#wang-ye-cai-ji-pa-chong" class="header-anchor">#</a></h2><p><strong>基本原理</strong> 网络爬虫的目的是将互联网上的网页下载到本地，形成一个或联网内容的镜像备份。<br><strong>基本流程</strong>选取一部分种子URL；将这些URL放入待抓取URL队列；从待抓取URL队列中取出待抓取的URL，解析DNS，得到主机的IP，并将URL对应的网页下载下来，存储到已下载网页库。此外，将这些URL放入已抓取URL队列；分析已抓取到的网页内容中的其它URL，并且将URL放入待抓取URL队列，从而进入下一个循环。<br><strong>爬虫角度划分网页</strong> 已下载过，已下载且过期，待下载，可知，不可知<br><strong>抓取策略</strong> <strong>深度优先遍历策略</strong> 深度优先遍历策略是指网络爬虫会从起始页开始，一个链接一个链接地跟踪下去，处理完这条线路之后再转入下一个起始页，继续跟踪链接。<strong>宽度优先遍历策略</strong>，宽度优先遍历策略的基本思路是：将新下载网页中发现的链接直接插入待抓取URL队列的末尾。即网络爬虫会先抓取起始网页中链接的所有网页，然后再选择其中的一个链接网页，继续抓取此网页链接中的所有网页。<strong>反向链接策略</strong>，反向链接数是指一个网页被其他网页链接指向的数量。反向链接数表示的是一个网页的内容受到其他人推荐的程度，可以用这个指标评价网页的重要程度，从而决定不同网页的抓取顺序。<strong>PartialPageRank策略</strong>，PartialPageRank策略借鉴了PageRank策略的思想：对于已经下载的网页，连同待抓取URL队列中的URL，形成网页集合，计算每个页面的PageRank值；计算完成后，将待抓取URL队列中的URL按照PageRank值的大小排列，并按照该顺序抓取页面。<strong>OPIC策略</strong>该策略实际上也是对页面进行重要性打分。在策略开始之前，给所有页面一个相同的初始现金（cash）。当下载了某个页面P之后，将P的现金分摊给所有从P中分析出的链接，并且将P的现金清空。对于待抓取URL队列中的所有页面，按照现金数进行排序。<strong>大站优先策略</strong>，对于待抓取URL队列中的所有网页，根据所属的网站进行分类；对于待下载页面数多的网站， 则优先下载。<br><strong>更新策略</strong> 1.历史参考策略 顾名思义，历史参考策略是指根据页面以往的历史更新数据，预测该页面未来何时会发生变化。一般来说，是通过泊松过程进行建模来预测的。2.用户体验策略 抓取系统可以优先更新那些在查询结果中排名靠前的网页，然后再更新排名靠后的网页。这种更新策略也需要用到历史信息。3.聚类抽样策略 。要计算某个类别网页的更新频率，只需对这类网页抽样，以它们的更新周期作为整个类别的更新周期。<br><strong>系统架构</strong> 三层，最底层不同地理位置的数据中心，每个数据中心数台抓取服务器，每个服务器若干爬虫程序。<br>对于一个数据中心的不同抓取服务器，协同方式有以下几种，主从式（主节点易成为系统瓶颈），对等式（扩展性不佳）<br><strong>一致哈希算法确定服务器分工</strong>  一致性哈希算法对URL的主域名进行哈希运算，映射为范围在0〜232之间的某个数；然后将这个范围平均分配给m台服务器，根据URL主域名哈希运算的值所处的范围判断由哪台服务器进行抓取。</p>
+<h2><span id="shu-ju-fen-pian">数据分片</span><a href="#shu-ju-fen-pian" class="header-anchor">#</a></h2><p>系统可扩展性分两种，纵向扩展(Scale Up)：不增加机器数而是通过改善单机硬件资源配置。横向扩展(Scale Out)：增加机器数目来获得水平扩展能力。<br>通常采用横向扩展的方式。与此对应，对于待存储处理的海量数据，需要通过数据分片来将数据进行切分并分配到各个机器中去。数据分片后，如何能够找到某条记录的存储位置就成为必然要解决的问题，这一般被称为数据路由。<br>数据分片实现系统的水平扩展，数据复制保证数据高可用性<br><strong>数据复制弊端</strong>由于每份数据存在多个副本，在并发对数据进行更新时如何保证数据的一致性就成为关键问题<br><strong>数据分片的抽象模型</strong>，一个二级映射关系。第一级映射：数据记录→数据分片空间。(一对多)第二级映射：数据分片→物理机器。(也是一对多)<br><strong>哈希分片</strong> 只能点查询，不支持范围查询。<br>Hash函数是将任意长度的消息映射成一个较短的定长输出消息的函数.。hash函数特性，正向快速，输入敏感，抗碰撞，单向性，谜题友好。</p>
+<h2><span id="shu-ju-fu-zhi-yu-yi-zhi-xing">数据复制与一致性</span><a href="#shu-ju-fu-zhi-yu-yi-zhi-xing" class="header-anchor">#</a></h2><p><strong>原教旨CAP</strong> C强一致性（分布式系统多份数据对于数据的更新效果与单份数据一样），A可用性（任何读写数据限时内完成），P分区容忍性（网络分区发生仍能工作）<br>对于一个大规模分布式数据系统来说，CAP三要素不可兼得，同一个系统至多只能实现其中的两个一般在网络环境下，运行环境出现网络分区是不可避免的，所以系统必须具备分区容忍性特性，于是一般在此种场景下设计大规模分布式系统时，架构师往往在AP和CP中进行权衡和选择<br><strong>CAP重装</strong> 在绝大多数系统未产生网络分区的情形下，应该尽可能保证AC两者兼得，也即大多数情况下考虑CAP三者兼得，当发生网络分区时，系统应该能够识别这种状况并对其进行正确处理。</p>
+<p>  <em>当发生网络分区后，系统识別出此种情形并明确记载各个分区的各自状态。为保证可用性，每个分区进入分区模式并各自执行本分区内的各种操作，此时产生了两个分区模式下的状态s1和s2,这两个状态是不一致的，即整个系统满足AP要素。当网络分区解决后，整个系统转入分区恢复状态，在恢复过程中，融合s1和s2形成新的满足一致性要求的新状态s’，此时系统再次进入满足CAP三要素的状态。</em></p>
+<p><strong>ACID原则</strong> A原子性（事务完全执行or完全不执行），C一致性（事务开始到结束满足一致性约束），I事务独立（事务之间序列化），D持久性（事务执行成功后不会无缘故撤销）。<br><strong>BASE原则</strong> 基本可用。软状态或柔性状态，最终一致性<br>BASE原则与ACID原则不同，前者是通过牺牲强一致性来获得高可用性。<br>数据库系统采纳ACID原则,获得高可靠性和强一致性。而大多数大数据环境下的云存储系统和NoSQL系统则采纳BASE原则</p>
+<p>总之，当CAP中的P岀现时，如果每个网络分区都尽可能执行ACID，那么对于网络分区问题解决后数据的一致性恢复是有很大帮助的。<br><strong>幂等性</strong> 分布式系统中的幂等性是指：调用方反复执行同一操作与只正确执行一次操作效果相同。</p>
+<h3><span id="yi-zhi-xing-mo-xing-fen-lei">一致性模型分类</span><a href="#yi-zhi-xing-mo-xing-fen-lei" class="header-anchor">#</a></h3><p><strong>强一致性</strong> 在数据库的所有进程中，当更新完成，后续所有访问都将获得更新值。<br><strong>若一致性</strong> 即系统不能保证后续访问都将获得更新值。<br><strong>最终一致性</strong> 在对x做出操作后，与最终看到新数值之前，存在一个时间片段，在这个时间片段内，数据也许是不一致的，即不一致窗口。<br><strong>因果一致性</strong> 因果一致性发生在进程之间有因果关系依赖的情况下。<br><strong>“读你所写”一致性</strong> “读你所写”一致性是因果一致性的特例。更新操作后，进程A后续访问到的都是新数值，其他进程并未受影响。<br><strong>会话一致性</strong> “会话一致性”是“读你所写”一致性的变体。当进程A通过会话与数据库系统连接，同一个会话内，可以保证“读你所写”一致性，若会话终止，进程A的数值会不一定。<br><strong>单调读一致性</strong> 最终一致性的另一种变体。如果某个进程读到数据x的一个数值，那么后续所有访问将不会返回任何之前的值。<br><strong>单调写一致性</strong> 另外一种最终一致性的变体。对于某个进程来说，单调写一致性可以保证其多次写做操作的序列化，同时也保证了应用开发者的顺利开发。</p>
+<h3><span id="fu-ben-geng-xin-ce-lue">*副本更新策略</span><a href="#fu-ben-geng-xin-ce-lue" class="header-anchor">#</a></h3><p>同时更新，主从式更新，任意节点更新，</p>
+<h3><span id="yi-zhi-xing-xie-yi">一致性协议</span><a href="#yi-zhi-xing-xie-yi" class="header-anchor">#</a></h3><p><strong>两阶段*提交协议</strong> 要么所有备份数据同时更改某个数值，要么都不更改，以此来达到数据的强一致性<br>协调者节点指示参与者节点进行提交等操作时，可能因为有进程陷入崩溃而导致处于阻塞态的对象进入长时间的等待。为了解决这种情况，可以引入超时判断机制和参与者互询机制。为了解决长时阻塞，提出了三段提交协议<br><strong>向量时钟</strong> 向量时钟是在分布式环境下生成事件之间偏序关系的算法，偏序关系代表事件发生先后顺序导致的事件因果依赖关系语义，通过将时间戳和事件绑定可以用来判定事件之间的因果相关性。</p>
+<p>向量时钟的更新规则：1、每次修改数据，本节点的版本号加1；2、每当进程发送消息时，会将自己的向量时钟和消息m同时发送出去；3、每次同步数据（同步和修改是不一样的写操作），会有三种情况<br>本节点向量版本与消息版本对比大小，操作。<br><strong>RWN协议</strong> 对多备份数据如何读写成功进行灵活配置，达到数据一致性。<br>R+W&gt;N</p>
+<h3><span id="paxos-xie-yi">Paxos协议</span><a href="#paxos-xie-yi" class="header-anchor">#</a></h3><p><strong>副本状态机模型</strong> 在实际实现上述副本状态机中的一致性协议时，往往追求以下几个特性：<br>安全性保证：保证不能做错的事，即非拜占庭模型下，状态机从不返回错误的结果，多个提议中只有一个被选中。可用性保证：只要大多数服务器正常，则整个服务器保持可用。一般情况下，大多数状态机维护Log一致即可快速通知客户端操作成功，这样避免了少数最慢的状态机拖慢整个请求响应速度。<br><strong>Paxos基本概念</strong> 又可以细分为两种:单Paxos和多Paxos，单Paxos，即副本状态机中各个服务器针对Log中固定某个位置的操作命令通过协议达成一致，多Paxos则是指这些服务器对应的Log内容中多个位置的操作命令序列通过协议保持一致。<br><strong>Paxos一致性协议</strong> 不同并行进程可能承担的3种角色如下，倡议者（提出），接受者（投票），学习者（决定）。在一致性协议框架中，一个并行进程可以同时承担以上多种角色。</p>
+<h3><span id="raft-xie-yi">Raft协议</span><a href="#raft-xie-yi" class="header-anchor">#</a></h3><p>与Paxos协议不同，在达到类似的一致性功能前提下，Raft 一致性协议最主要的目标有两个： 可理解性；实现实际系统的确定性。<br>Raft协议为了达到上述两个目的，主要釆取了以下两个手段：<br>其一，采取分解法。Raft将整个一致性协议划分为领导者选举、Log复制与安全性3个问题。<br>其二，将Paxos的P2P模式改造为Master-Slave模式。<br>服务器状态：在任意时刻，集群中的服务器只能处于以下3种状态之一：Leader、 Follower 和Candidate。<br>Raft将整个系统执行时间划分为由若干不同时间间隔长度的时间片段构成的序列，每个时间片段被称为一个Term 。<br>另,Raft可以保证在一个Term内最多有一个服务器会被选举成为新的领导者。</p>
+<h1><span id="di-san-zhang-da-shu-ju-chang-yong-suan-fa-yu-shu-ju-jie-gou">第三章大数据常用算法与数据结构</span><a href="#di-san-zhang-da-shu-ju-chang-yong-suan-fa-yu-shu-ju-jie-gou" class="header-anchor">#</a></h1><h2><span id="bu-long-guo-lu-qi">布隆过滤器</span><a href="#bu-long-guo-lu-qi" class="header-anchor">#</a></h2><p>Bloom Filter（简称BF），是二进制向量数据结构，常被用来检测某个元素是否是巨量数据集合中的成员。<br><strong>优点</strong>：1.具有很好的空间和时间效率，尤其是空间效率极高：因为不需要存储集合数据本身内容<br>2.不会漏判<br><strong>缺点</strong>：1.查询某个成员是否属于集合时，会发生误判（False Positive）：即如果某个成员不在集合中，有可能BF会得出其在集合中的结论<br>2.无法删除集合成员，只能增加成员并对其査询。<br>因此只适合于允许一定误判率的情况<br><strong>基本原理</strong> 使用长度为m的位数组来存储集合信息，同时使用k个相互独立的哈希函数将数据映射到位数组空间</p>
+<p>如图可知如果恰好对应的几个位置都变成1了可能会误判<br>还有各种计算误判率等等(没考到)</p>
+<p><strong>计数BF对无法删除集合成员做了改进</strong><br>改进思路：基本BF无法实现删除的根本原因是其基本信息单元是1个比特位，所以只能表达两种状态，致使其表达能力非常有限。改进的思路很直接，将基本信息单元由1比特位拓展为多个比特位（例如采用3个比特位），这样就可以有更多表达能力，可以承载更多信息。<br>布隆过滤器由于极高的空间利用率，广泛应用，尤其数据量极大且容忍一定误判率的场合。</p>
+<h2><span id="tiao-biao">跳表</span><a href="#tiao-biao" class="header-anchor">#</a></h2><p>是一种可替代平衡树的数据结构，但是又不像平衡树那样需要强制保持树的平衡。<br>空间复杂度O（n），跳跃表高度O（logn），时间复杂度查找，插入，删除都是O（logn）。</p>
+<p><em>核心思路：设想：如果链表中一般节点都能够多保留一个指向后续节点之后的指针，那么此时最多遍历[n/2]+1次即可找到任意节点（n为链表长度）如果增加3个、4个甚至更多脂针呢？这就是Skiplist的核心思路</em><br><strong>需要满足以下两个条件</strong>：S0包含所有的元素，并且所有链中的元素按照升序排列。每条链中的元素集合必须包含于序数较小的链的元素集合，依赖随机数决定该节点有多少个指向后续节点的指针，有几个指针就是几层（叫做Level）。<br><strong>跳表查询</strong>从最上层的链(Sh)的开头开始，查询x<br>假设当前位置为p，它向右指向的节点为q（p与q不一定相邻），且q的值为y。将y与×作比较<br>x=y     输出成功，输出相关信息<br>x&gt;y     从p向右移动到q的位置<br>x&lt;y     从p向下移动一格<br>如果当前位置在最底层的链中(S0)，且还要往下移动的话，则输出查询失败</p>
+<h3><span id="cha-ru-cao-zuo">插入操作</span><a href="#cha-ru-cao-zuo" class="header-anchor">#</a></h3><p>在跳跃表中插入一个元素x由两部分组成：查找插入的位置和插入对应元素。<br>为了确定插入的“列高”，我们引入一个随机决策模块：<br>产生一个0到1的随机数r，如果r小于一个概率因子p，则执行方案A，否则，执行方案B。具体步骤1.列的初始高度为1。2.插入元素时，不停地执行随机决策模块3.如果要求被执行的是A操作，则将列的高度加1,并且继续反复执行随机决策模块4.直到第i次，模块要求执行的是B操作，我们结束决策，并向跳跃表中插入一个高度为i的列</p>
+<h3><span id="shan-chu-cao-zuo">删除操作</span><a href="#shan-chu-cao-zuo" class="header-anchor">#</a></h3><p>删除操作分为以下三个步骤：在跳跃表中找到这个元素的位置，如果未找到，则退出。将元素所在整列从表中删除。将多余的“空链”删除。</p>
+<h2><span id="lsm-shu">LSM树</span><a href="#lsm-shu" class="header-anchor">#</a></h2><p>LSM树的本质是将大量的随机写操作转换成批量的序列写，这样可以极大地提升磁盘数据写入速度，其代价是读效率降低，可引入BF等来改善。<br>LSM树在大数据存储系统中获得了极为广泛的使用，比如BigTable中的单机数据存储引擎本质上就是LSM树。<br><strong>主要构成</strong>:内存中的MemTable和Immutable MemTable磁盘上的Current文件,manifest文件、log文件以及SSTable 文件这几种主要文件。<br><strong>写入操作</strong>：当应用写入一条Key： Value记录的时候，LevelDB会先往log文件里写入，成功后将记录插进MemTable中，这样基本就算完成了写入操作。一次写入操作只涉及一次磁盘顺序写和一次内存写入, LSM树是一种高速写入数据结构</p>
+<h3><span id="wen-jian-zuo-yong">文件作用</span><a href="#wen-jian-zuo-yong" class="header-anchor">#</a></h3><p><strong>log文件</strong>：主要是用于系统崩溃恢复而不丢失数据。<br><strong>Immutable MemTable</strong>：当MemTable插入的数据占用内存到了一个界限后，需要将内存的记录导出到外存文件中， LevelDB会生成新的log文件和MemTable,原先的MemTable就成为Immutable MemTable,即这个MemTable的内容是不可更改的，只能读不能写入或者删除。<br><strong>SSTable</strong>：新到来的数据被记入新的log文件和MemTable, LevelDB后台调度会将Immutable MemTable的数据导出到磁盘，形成一个新的SSTable文件。SSTable就是由内存中的数据不断导出并进行Compaction操作后形成的。SSTable中的文件是主键有序的（小key排在大key前）<br><strong>manifest文件</strong>：SSTable中的某个文件属于特定层级，而且其存储的记录是key有序的，那么必然有文件中的最小key和最大key,这是非常重要的信息，LevelDB应该记下这些信息。manifest就是记载这些信息的。<br><strong>Current文件</strong>：其内容只有一个信息，就是记载当前的manifest文件名。</p>
+<h3><span id="compaction-ji-zhi-huan-mei-kan">*Compaction机制（还没看）</span><a href="#compaction-ji-zhi-huan-mei-kan" class="header-anchor">#</a></h3><p>主要的3种类型的 Compaction：分别是 minor、major 和 full。<br>minor Compaction：把 MemTable 中的数据导出到SSTable文件中。major Compaction：合并不同层级的SSTable文件。full Compaction：将所有SSTable进行合并。</p>
+<h1><span id="di-si-zhang-fen-bu-shi-wen-jian-xi-tong-hdfs-yu-zookeeper-he-gfs">第四章分布式文件系统（HDFS与ZooKeeper和GFS）</span><a href="#di-si-zhang-fen-bu-shi-wen-jian-xi-tong-hdfs-yu-zookeeper-he-gfs" class="header-anchor">#</a></h1><p>在以千计的普通服务器组成的集群中存储以PB计的海量数据 以文件系统的方式来组织海量数据。</p>
+<h2><span id="gfs-xi-tong-gu-ge">GFS系统（谷歌）</span><a href="#gfs-xi-tong-gu-ge" class="header-anchor">#</a></h2><h3><span id="she-ji-yuan-ze">设计原则</span><a href="#she-ji-yuan-ze" class="header-anchor">#</a></h3><p><strong>GFS在设计之初就定下了几个基本的设计原则</strong>：<br>1.GFS采用大量商业PC来构建存储集群，数据冗余备份、自动检测机器是否还在有效提供服务、故障机器的自动恢复等都列在GFS的设计目标里。<br>2.GFS文件系统所存储的文件绝大多数都是大文件，文件大小大多数在100MB到几GB之间。所以系统的设计应该针对这种大文件的读/写操作做出优化。<br>3.系统中存在大量的“追加写”操作，即将新增内容追加到已有文件的末尾，已经写入的内容一般不做更改，很少有文件的“随机写”行为，即指定已有文件中间的某个位置，在这个位置之后写入数据。<br>4.对于数据读取操作来说，绝大多数读文件操作都是“顺序读”，少数的操作是“随机读” ，即按照数据在文件中的顺序,一次顺序读入较大量的数据，而不是不断地定位到文件指定的位置, 读取少量数据。</p>
+<h3><span id="zheng-ti-jia-gou">整体架构</span><a href="#zheng-ti-jia-gou" class="header-anchor">#</a></h3><p><strong>组成部分</strong> 唯一的“主控服务器”(Master)、众多的“Chunk 服务器”和“GFS客户端”。<br>①“主控服务器”主要做管理工作；②“Chunk服务器”负责实际的数据存储并响应；③“GFS客户端”的读/写请求。<br>GFS类似于本地的统一文件系统，分布式存储系统的细节对应用开发者来说是不可见的。</p>
+<p>GFS命名空间由众多的目录和GFS文件构成,一个GFS文件由众多固定大小的Chunk构成,而每个Chunk又由更小粒度的Block构成，Chunk是GFS中基本的存储单元,而Block是基本的读取单元。</p>
+<p>GFS即以Chunk为基本存储单位，同一个文件的不同Chunk可能存储在不同的</p>
+<p>主控服务器做管理工作，<strong>不仅要维护GFS命名空间，还要维护Chunk命名空间</strong>，每个Chunk有不同编号，所有Chunk编号组成Chunk命名空间。主控服务器还<strong>记录每个Chunk存储在哪台Chunk服务器</strong>，维护文件名称到多个Chunk的映射关系。</p>
+<p>Chunk服务器负责存储与响应主控服务器对自己的Chunk的读写请求<br><strong>读取数据</strong> 1.GFS收到在file文件读取P位置的请求 2.用P位置与Chunk大小L算出第几个Chunk，转换为&lt;file，Chunk号&gt; 3.这个请求发给主控服务器，找到对应Chunk服务器，发回GFS 4.GFS与对应Chunk建立联系，发送读取的Chunk号和范围。</p>
+<p><strong>GFS“主从式结构”</strong> 采取“ 主从结构”的好处是: 因为整个系统存在一个全局的主控节点,所以管理起来相对简单。相对应的缺点是：因为主控节点是唯一的，很多服务请求都需要经过“主控服务器”，所以很容易成为整个系统的瓶颈。</p>
+<h3><span id="gfs-zhu-kong-fu-wu-qi-yuan-shu-ju-yi-ji-dui-ying-guan-li-gong-neng-yuan-shu-ju-wei-shu-ju-de-shu-ju">GFS主控服务器（元数据以及对应管理功能）元数据为数据的数据</span><a href="#gfs-zhu-kong-fu-wu-qi-yuan-shu-ju-yi-ji-dui-ying-guan-li-gong-neng-yuan-shu-ju-wei-shu-ju-de-shu-ju" class="header-anchor">#</a></h3><p>1.GFS命名空间和Chunk命名空间：主要用来对目录文件以及Chunk的增删改等信息进行记录。<br>2.从文件到其所属Chunk之间的映射关系：因为一个文件会被切割成众多Chunk,所以系统需要维护这种映射关系。<br>3.每个Chunk在哪台“Chunk服务器”存储的信息：在GFS系统中，每个文件会被切割成若干Chunk,同时，每个Chunk会被复制多个备份，并存储在不同的服务器上。</p>
+<p><strong>元数据记录</strong>GFS将前两类管理信息（命名空间及文件到Chunk映射表）记录在系统日志文件内， 并且将这个系统日志分别存储在多台机器上，这样就避免了信息丢失的问题。对于第3类管理数据 （Chunk存储在哪台服务器的信息），“主控服务器”在启动时询问每个’’Chunk服务器”,之后靠定期询问来保持最新的信息。<br><strong>进行备份和迁移的时候考虑因素</strong> ①Chunk教据的可用性，若发现不可用，及时备份。②要尽可能减少网络传输压力。</p>
+<p>为了避免单一 “主控服务器”可能存在的单点失效问题，GFS采用了增加另外一台“影子服务器”的方式，当“主控服务器”出现故障无法提供服务时，可由影子服务器接替“主控服务器”行使对应的管理功能。</p>
+<h3><span id="xi-tong-jiao-hu-xing-wei">系统交互行为</span><a href="#xi-tong-jiao-hu-xing-wei" class="header-anchor">#</a></h3><p><strong>执行写操作流程</strong> </p>
+<p>①GFS客户端首先和“主控服务器”通信,获知哪些”Chunk 服务器”存储了要写入的Chunk,包括“主备份”和两个“次级备份”的地址数据。②之后,GFS客户端将要写入的数据推送给3个备份Chunk，备份Chunk首先将这些待写入的数据放在缓存中。③然后通知GFS客户端是否接收成功。如果所有的备份都接收数据成功，GFS客户端通知“主备份”可以执行写入操作,“主备份”自己将缓存的数据写入Chunk中，通知“次级备份”按照指定顺序写入数据，“次级备份”写完后答复“主备份”写入成功，“主备份”会通知GFS客户端这次写操作成功完成。④如果待写入的数据跨Chunk或者需要多个Chunk才能容纳，则客户端会自动将其分解成多个写操作，其执行流程与上述流程一致。</p>
+<p><strong>原子追加操作</strong>的运行逻辑与上图所述基本相同，唯一的区別在于“主备份”：“主备份”在接收到客户端的写入通知时，需要判断当前Chunk剩余空间是否足够容纳得下要写入的记录，如果不够，那么将当前Chunk进行自动填充满并通知所有“次级备份”也如此操作，然后通知客户端让其尝试写入文件的下一个Chunk中。</p>
+<h2><span id="hdfs">HDFS</span><a href="#hdfs" class="header-anchor">#</a></h2><h3><span id="zhu-yao-zu-jian">主要组件</span><a href="#zhu-yao-zu-jian" class="header-anchor">#</a></h3><p>Hadoop分布式文件系统（HDFS）是一种旨在在商品硬件上运行的分布式文件系统。高容错率，部署在低成本硬件上，提供对应用程序数据的高吞吐量访问，并且适用于具有大数据集的应用程序 ，可以实现对文件系统数据的流式访问。<br><strong>HDFS与Hadoop关系</strong> Hadoop实现了一个分布式文件系统，简称HDFS。<br>HDFS默认最基本的存储单位是64M的数据块，若数据小于64,不占用整个数据块。<br>NameNode存储元数据（内存）保存文件、block、datanote之间的映射关系，DataNode存储文件内容（磁盘）<br><strong>Secondary NameNode（次要NameNode）</strong> 为NameNode提供检查点功能服务。定期从NameNode拉去fsimage和editlog文件并对这两个文件进行合并。<br><strong>客户端</strong> 与NameNode联系获取所需读/写文件的元数据，与DataNode直接通信完成实际数据的读写</p>
+<h3><span id="ha-jia-gou">HA架构</span><a href="#ha-jia-gou" class="header-anchor">#</a></h3><p>namenode存在单点失效问题，为解决此问题，给出HA架构<br><strong>HA方案</strong> 一个HDFS集群至少存在两个nameNode，一个nameNode处在active（主）状态，其他nameNode处在standby（备）状态。一旦处于activate状态的nameNode发生意外，其他处于standby状态的nameNode立即抢占activate的临时节点，代替发生意外的nameNode继续对外提供服务</p>
+<h3><span id="zhu-cong-qie-huan-namenode-zhu-bei-qie-huan">主从切换（Namenode主备切换）</span><a href="#zhu-cong-qie-huan-namenode-zhu-bei-qie-huan" class="header-anchor">#</a></h3><p>定时调用对应 NameNode 的对 NameNode 的健康状态进行检测，如检测到健康状态变化，会回调 注册的相应方法进行处理。若其判断需要主备切换，会首先进行自动的主备选举。在主备选举完成后，通知当前的 NameNode 成为主 NameNode 或备 NameNode。最后将 NameNode 转换为 Active 状态或 Standby 状态。</p>
+<h3><span id="namenode-lian-meng">NameNode联盟</span><a href="#namenode-lian-meng" class="header-anchor">#</a></h3><p>导致系统具有如下缺陷：名命空间可扩展性差，性能可扩展性差，隔离性差<br>其多个namenode各自管理属于自己的一部分数据，多个namenode都是不一样的，但是他们公用一块datanode的存储空间，这样可以减缓单个namenode造成的压力。<br><strong>隔离性</strong>：不同namenode上运行的任务不会互相影响，一个namenode的任务出现问题不会影响其他的namenode。</p>
+<h1><span id="di-wu-zhang-ji-qun-zi-yuan-guan-li-diao-du">第五章集群资源管理调度</span><a href="#di-wu-zhang-ji-qun-zi-yuan-guan-li-diao-du" class="header-anchor">#</a></h1><h2><span id="zi-yuan-guan-li-chou-xiang-mo-xing">资源管理抽象模型</span><a href="#zi-yuan-guan-li-chou-xiang-mo-xing" class="header-anchor">#</a></h2><p>从现有的各种资源管理与调度系统中抽象出两个模型：资源管理的<strong>概念模型</strong>和<strong>通用架构</strong>。</p>
+<h3><span id="gai-nian-mo-xing">概念模型</span><a href="#gai-nian-mo-xing" class="header-anchor">#</a></h3><p>从概念上讲，资源管理与调度系统的主要目的是将集群中的各种资源通过一定策略分配给用户提交到系统里的各种任务，常见的资源主要包括内存、CUP、网络资源与磁盘I/O资源4类。<br>而概念模型主要强调三要素：<strong>资源组织模型、调度策略和任务组织模型</strong>。<br><strong>资源组织模型</strong> 其主要目标是将集群中当前可用的各种资源采用一定的方式组织起来，以方便后续的资源分配过程。一个常见的资源组织方式是将资源组织成多层级队列的方式。<br><strong>调度策略</strong> 负责以一定方式将资源分配给提交到系统的任务，常见的调度策略包括FIFO、公平调度、能力调度、延迟调度等。<br><strong>任务组织模型</strong> 其主要目标是将多用户提交的多任务通过一定方式组织起来，以方便后续资源分配。</p>
+<h3><span id="tong-yong-jia-gou">通用架构</span><a href="#tong-yong-jia-gou" class="header-anchor">#</a></h3><p>通用调度器由资源收集器和资源调度策略构成，同时管理资源池和工作队列数据结构。<br><strong>资源收集器</strong>不断地从集群内各个节点收集和更新资源状态信息，并将其最新状况反映到资源池中，资源池列岀目前可用的系统资源。<br><strong>资源调度策略</strong>具体决定如何将资源池中的可用资源分配给工作队列，常见的包括FIFO、公平调度策略和能力调度策略等。<br><strong>节点管理器</strong>：集群中每台机器上会配置节点管理器来不断地向1）资源收集器汇报目前本机资源使用状况，2）并负责容器的管理工作。<br>当某个任务被分配到本节点执行时，节点管理器负责将其纳入某个容器执行并对该容器进行资源隔离，以避免不同容器内任务的相互干扰。</p>
+<h2><span id="diao-du-xi-tong-she-ji-de-ji-ben-wen-ti">调度系统设计的基本问题</span><a href="#diao-du-xi-tong-she-ji-de-ji-ben-wen-ti" class="header-anchor">#</a></h2><h3><span id="zi-yuan-yi-zhi-xing-yu-gong-zuo-fu-zai-yi-zhi-xing">资源异质性与工作负载异质性</span><a href="#zi-yuan-yi-zhi-xing-yu-gong-zuo-fu-zai-yi-zhi-xing" class="header-anchor">#</a></h3><p><strong>异质性</strong>：指的是元素构成的多元性和相互之间存在的较大差异性。<br><strong>资源异质性</strong>是从系统所拥有的资源角度来看的。比如硬件差异性等等。<br><strong>工作负载异质性</strong>是从任务角度来看的。因为各种服务和功能特性各异，对资源的需求差异也很大。</p>
+<h3><span id="shu-ju-ju-bu-xing">数据局部性</span><a href="#shu-ju-ju-bu-xing" class="header-anchor">#</a></h3><p>大数据场景下的一个基本设计原则是：将计算任务推送到数据所在地进行而不是反过来。<br><strong>分类</strong><br>1.节点局部性：是指可以将计算任务分配到数据所在的机器节点，这是数据局部性最优的一种情形，因为完成计算无须任何数据传输。<br>2.机架局部性：虽然计算任务和所需数据分属两个不同的计算节点，但是这两个节点在同一个机架中。这也是效率较高的一种数据局部性，因为机架内机器节点间网络传输速度要明显高于机架间网络传输速度。<br>3.其他的情况则属于全局局部性，此时需要跨机架进行网络传输，会产生较大的网络传输开销。</p>
+<h3><span id="qiang-zhan-shi-diao-du-yu-fei-qiang-zhan-shi-diao-du">抢占式调度与非抢占式调度</span><a href="#qiang-zhan-shi-diao-du-yu-fei-qiang-zhan-shi-diao-du" class="header-anchor">#</a></h3><p><strong>抢占式调度</strong> 如果空闲资源不足或者出现不同任务共同竞争同一资源，调度系统可以从比当前计算任务优先级低的其他任务中获取已分配资源，而被抢占资源的计算任务则需出让资源停止计算，在后续步骤中继续重新申请新资源来完成后续计算，有时甚至需要废弃已经完成的计算任务重新执行。<br><strong>非抢占式调度</strong> 只允许从空闲资源中进行分配，如果当前空闲资源不足，则须等待其他任务释放资源后才能继续向前推进。</p>
+<h3><span id="zi-yuan-fen-pei-li-du">资源分配粒度</span><a href="#zi-yuan-fen-pei-li-du" class="header-anchor">#</a></h3><p>大数据场景下的计算任务往往由两层结构构成：作业级(Job)和任务级(Task)。<br>一个作业由多个并发的任务构成，任务之间的依赖关系往往形成有向无环图(DAG)。<br>一种极端的情况是需要将作业的所有所需资源一次性分配完成，这常被称为“<strong>群体分配</strong>“(Gang Scheduler )或者“全分或不分(All-or-Nothing )策略。<br>另外一种分配粒度是采取<strong>增量满足式分配策略</strong>，即对于某个作业来说，只要分配部分资源就能启动一些任务开始运行，随着空闲资源的不断岀现，可以逐步增量式分配给作业其他任务以维持作业不断地向后推进。<br><strong>资源储备策略</strong>：只有分配到一定量的资源作业才能启动，但是在未获得足够资源的时候，作业可以先持有目而已分配的资源，并等待其他作业释放资源。</p>
+<h3><span id="e-si-yu-si-suo-wen-ti">饿死与死锁问题</span><a href="#e-si-yu-si-suo-wen-ti" class="header-anchor">#</a></h3><p><strong>饿死</strong> 计算任务“饿死”，指的是这个计算任务持续长时间无法获得开始执行所需的最少资源量，导致一直处于等待执行的状态。<br><strong>死锁</strong> 死锁问题则是由于资源调度不当导致整个调度系统无法继续正常执行。</p>
+<h3><span id="zi-yuan-ge-chi-fang-fa">资源隔离方法</span><a href="#zi-yuan-ge-chi-fang-fa" class="header-anchor">#</a></h3><p>将各种资源封装在容器中的细粒度资源分配方法， 整个分布式资源管理系统封装了为数众多的资源容器，为了避免不同任务之间互相干扰，需要提供容器间的资源隔离方法。<br><strong>方法</strong> 目前对于资源隔离最常用的手段是Linux容器。LXC是一种轻量级的内核虚拟化技术，可以用来进行资源和进程运行的隔离，通过LXC可以在一台物理主机上隔离出多个相互隔离的容器，目前有开源版本。</p>
+<h2><span id="zi-yuan-guan-li-yu-diao-du-xi-tong-fan-xing">资源管理与调度系统范型</span><a href="#zi-yuan-guan-li-yu-diao-du-xi-tong-fan-xing" class="header-anchor">#</a></h2><p>可以归纳出3种资源管理与调度系统范型：集中式调度器、两级调度器与状态共享调度器。</p>
+<h3><span id="ji-zhong-shi-diao-du-qi">集中式调度器</span><a href="#ji-zhong-shi-diao-du-qi" class="header-anchor">#</a></h3><p>集中式调度器在整个系统中只运行一个全局的中央调度器实例，所有之上的框架或者计算任务 的资源请求全部经由中央调度器来满足。<br><strong>单路径调度器</strong> 是指不论计算任务是何种类型，都采取统一的调度策略来进行资源管理与调度。<br><strong>多路径调度器</strong> 对单路径调度器做出了改进，可以支持多种调度策略，尽管这些调度策略都是由中央调 度器来实现的，但是在具体实现时可以根据任务类型来进行不同策略的分支选择。</p>
+<p>集中式调度器由将所有调度逻辑全部融入中央调度器，所以实现逻辑复杂，系统可扩展性差，支持不同类型的调度策略缺乏灵活性。<br>集中式调度器并发性能较差，比较适合较小规模的集群系统。</p>
+<h3><span id="liang-ji-diao-du-qi">两级调度器</span><a href="#liang-ji-diao-du-qi" class="header-anchor">#</a></h3><p>两级调度器将整个系统的调度工作划分为两个级别：中央调度器和框架调度器。<br><strong>中央调度器</strong>可以看到集群中所有机器的可用资源并管理其状态，它可以按照一定策略将集群中的所有资源分配给各个计算框架。中央调度器级别的资源调度是一种粗粒度的资源调度方式。<br>各个<strong>计算框架</strong>在接收到所需资源后，可以根据自身计算任务的特性，使用自身的调度策略来进一步细粒度地分配从中央调度器获得的各种资源。<br>与集中式调度器相比，两级调度器由于在计算框架层面存在第二级资源调度，而这可以提供一种天然的并发性，所以整体调度性能较好，也有可扩展性。</p>
+<h3><span id="zhuang-tai-gong-xiang-diao-du-qi">状态共享调度器</span><a href="#zhuang-tai-gong-xiang-diao-du-qi" class="header-anchor">#</a></h3><p>在这种调度范型中，每个计算框架可以看到整个集群中的所有资源，并采用相互竞争的方式去获取自己所需的资源，根据自身特性采取不同的具体资源调度策略，同时系统采用了乐观并发控制手段解决不同框架在资源竞争过程中出现的需求冲突。<br><strong>与两级调度区别</strong><br><strong>定义</strong>去看ppt</p>
+<p><strong>集中式调度器比较适合小规模集群下的资源调度与管理, 两级调度器比较适合负载同质的大规模集群应用场景,而状态共享调度器则更适合负载异质性较强但资源冲突不多的大规模集群应用场景。</strong></p>
+<h2><span id="zi-yuan-diao-du-ce-lue">资源调度策略</span><a href="#zi-yuan-diao-du-ce-lue" class="header-anchor">#</a></h2><h3><span id="fifo-diao-du-ce-lue">FIFO调度策略</span><a href="#fifo-diao-du-ce-lue" class="header-anchor">#</a></h3><p>提交的作业按照提交时间先后顺序或者根据优先级次序将其放入线性队列相应位置，在资源调度时按照队列先后顺序，先进先出地进行调度与资源分配。</p>
+<h3><span id="gong-ping-diao-du-qi">公平调度器</span><a href="#gong-ping-diao-du-qi" class="header-anchor">#</a></h3><p>其将用户的任务分配到多个资源池(Pool ),每个资源池设定资源分配最低保障和最高上限，管理员也可以指定资源池的优先级, 优先级高的资源池会被分配更多的资源，当一个资源池资源有剩余时，可以临时将剩余资源共享给其他资源池。</p>
+<h3><span id="neng-li-diao-du-qi">能力调度器</span><a href="#neng-li-diao-du-qi" class="header-anchor">#</a></h3><p>它将用户和任务组织成多个队列，每个队列可以设定资源最低保障和使用上限，当一个队列的资源有剩余时，可以将剩余资源暂时分享给其他队列。调度器在调度时，优先将资源分配给资源使用率最低的队列(即队列已使用资源量占分配给队列的资源量比例最小的队列)；在队列内部，则按照作业优先级的先后顺序遵循FIFO策略进行调度。</p>
+<h3><span id="yan-chi-diao-du-ce-lue">延迟调度策略</span><a href="#yan-chi-diao-du-ce-lue" class="header-anchor">#</a></h3><p>对于当前被调度到要被分配资源的任务i，如果当前资源不满足数据局部性，那么可以暂时放弃分配公平性，任务i不接受当前资源，而是等待后续的资源分配；当前’资源可以跳过任务i分配给其他待调度任务j，如果任务i在被跳过k次后仍然等不到满足局部性的资源，则放弃数据局部性，被迫接受当前资源来启动任务执行。</p>
+<h3><span id="zhu-zi-yuan-gong-ping-diao-du-ce-lue">主资源公平调度策略</span><a href="#zhu-zi-yuan-gong-ping-diao-du-ce-lue" class="header-anchor">#</a></h3><p>最大化目前分配到最少资源量的用户或者任务的资源量。这个算法常常用来对单个资源进行公平分配，而DRF则将其扩展到了多个资源的公平分配场景下。<br>对于每个用户，DRF计算分配给这个用户的所有资源的各自分享量（Share ）,而一个用户的各个资源分享量中的最大值被称作“主分享量”（Dominant Share ）,“主分享量”对应的资源被称为这个用户的”主资源”（Dominant Resource ）。不同用户可能拥有不同的“主资源”，比如一个用户是运行计算密集型任务，那么他的“主资源”是CPU；而另外一个用户运行I/O密集型计算，则其“主资源”为磁盘带宽。DRF旨在使得不同用户的各自“主分享量”最大化地保持公平</p>
+<h2><span id="mesos">*Mesos</span><a href="#mesos" class="header-anchor">#</a></h2><p>从其范型来讲是一个典型的两级调度器。<br>在中央调度器一级采取极简功能和极小接口，只是根据一定策略决定分配给各个机架多少资源，将数据局部性保证等具体资源调度策略下推到各个框架，这样可以减少中央调度器的负载，增加调度效率<br>整体架构采用了典型的“主-从”架构。中央调度器由多个主控服务器构成。ZooKeeper可以保证当正在工作的主控服务器岀现故障时，备用主控服务器可以快速将管理工作接替过来，以此增加整个调度系统的健壮性。<br>主控服务器使用“资源供应（Resource Offers ）来将集群内的资源分配给各个计算框架，每份“资源供应”代表了一部分集群内可用的资源列表（包括内存、CPU等）。<br>主控服务器通过“资源供应”决定为每个框架提供多少资源，每个框架自身的二级调度器做更细致的任务间资源分配。</p>
+<h1><span id="di-liu-zhang-da-gui-mo-pi-chu-li-xi-tong">第六章大规模批处理系统</span><a href="#di-liu-zhang-da-gui-mo-pi-chu-li-xi-tong" class="header-anchor">#</a></h1><h2><span id="gai-shu">概述</span><a href="#gai-shu" class="header-anchor">#</a></h2><p>最典型的批处理计算范型MapReduce ，DAG计算模型可以认为是对MapReduce计算机制的一种拓展。MapReduce尽管提供了简洁的用户接口，应用开发者只须完成Map和Reduce函数的业务逻辑即可实现大规模数据批处理任务，但是其支持的运算符仅仅限定于Map和Reduce两类。</p>
+<h2><span id="mapreduce-ji-suan-mo-xing-yu-jia-gou">MapReduce计算模型与架构</span><a href="#mapreduce-ji-suan-mo-xing-yu-jia-gou" class="header-anchor">#</a></h2><p><strong>特点</strong><br>①具有<strong>极强的可扩展性</strong>，可以在数千台机器上并发执行，可通过添加节点以扩展集群能力。<br>②具有<strong>很好的容错性</strong>，通过计算迁移或数据迁移等策略提高集群的可用性与容错性，即使集群机器发生故障，一般情况下也不会影响任务的正常执行。<br>③<strong>具有高度抽象的编程思想</strong>，用户只需要完成Map和Reduce函数，描述做什么，即可完成大规模数据的并行处理，具体怎么做交由系统的执行框架处理。</p>
+<h3><span id="mapreduce-guo-cheng">MapReduce过程</span><a href="#mapreduce-guo-cheng" class="header-anchor">#</a></h3><p>Map阶段的输出即为Reduce阶段的输入，可以把MapReduce理解为，把一堆杂乱无章的数据按照某种特征归纳起来，然后处理并得到最后的结果。<br><strong>Map阶段</strong>面对的是杂乱无章的互不相关的数据，从中提取出key和value，也就是提取了数据的特征。<strong>Reduce阶段</strong>，数据是以key后面跟着若干个value来组织的，这些value有相关性。在此基础上我们可以做进一步的处理以便得到结果。输入输出皆为key/value数据对<br><strong>Map函数</strong>以Key/Value数据对作为输入，将其计算产生若干仍旧以Key/Value形式表达的中间数据。MapReduce计算框架会自动将中间结果中具有相同Key值的记录聚合在一起，并将数据传送给Reduce函数内定义好的处理逻辑作为其输入值。<br><strong>Reduce函数</strong>接收到Map阶段传过来的某个Key值及其对应的若干Value值等中间数据，函数逻辑对这个Key对应的Value内容进行处理，一般是对其进行累加、过滤、转换等操作，生成Key/Value 形式的结果，这就是最终的业务计算结果。</p>
+<h3><span id="map-jie-duan-xiang-jie">Map阶段详解</span><a href="#map-jie-duan-xiang-jie" class="header-anchor">#</a></h3><p>Job提交前，  先将待处理的文件进行分片 。MR框架默认将一个块  (Block) 作为一个分片 。客户端应用可以重定义块与分片的映射关系。<br>Map阶段先把数据放入一个环形内存缓冲区，当缓冲区数据达到80%左右时发生溢写，需将缓冲区中的数据写入到本地磁盘。</p>
+<h3><span id="reduce-jie-duan-xiang-jie">Reduce阶段详解</span><a href="#reduce-jie-duan-xiang-jie" class="header-anchor">#</a></h3><p>MOF文件是经过排序处理的。当Reduce Task接收的数据量不大时，则直接存放在内存缓冲区中，随着缓冲区文件的增多，MR后台线程将它们合并成一个更大的有序文件，这个动作是Reduce阶段的Merge操作，过程中会产生许多中间文件，最后一次合并的结果直接输出到用户自定义的reduce函数。<br>当数据很少时，不需要溢写到磁盘，直接在缓存中归并，然后输出给Reduce。</p>
+<h3><span id="shuffle-guo-cheng">Shuffle过程</span><a href="#shuffle-guo-cheng" class="header-anchor">#</a></h3><p>Shuffle的定义：Map阶段和Reduce阶段之间传递中间数据的过程，包括Reduce Task从各个Map Task获取MOF文件的过程，以及对MOF的排序与合并处理</p>
+<h3><span id="xi-tong-jia-gou">系统架构</span><a href="#xi-tong-jia-gou" class="header-anchor">#</a></h3><p>MapReduce 是一种分布式批处理计算模型，可以开发不同的具体系统来实现这种计算思路。其中最有名的当属Google的MapReduce计算框架和Hadoop的MapReduce 计算框架。</p>
+<p>当用户程序执行MapReduce提供的调用函数时，其<strong>处理流程</strong>如下。<br>1.MapReduce框架将应用的输入数据切分成N个数据块，典型的数据块大小为64MB，然后可以启动位于集群中不同机器上的若干程序。<br>2.这些程序中有一个全局唯一的主控 Master程序以及若干工作程序（Worker），Master负责为Worker 分配具体的Map任务或者Reduce任务并做一些全局管理功能。整个应用有N个Map任务和R个Reduce任务，具体的N和R个数可以由应用开发者指定。Master将任务分配给目前处于空闲状态的Worker 程序。<br>3.被分配到Map任务的Worker 读取对应的数据块内容，从数据块中解析出一个个Key/Value记录数据并将其传给用户自定义的Map函数，Map函数输出的中间结果Key/Value数据在内存中进行缓存。<br>4.缓存的Map函数产生的中间结果周期性地被写入本地磁盘，每个Map函数的中间结果在写入磁盘前被分割函数切割成R份，R是Reduce的个数。这里的分割函数一般是用Key对R进行哈希取模，这样就将Map函数的中间数据分割成R份对应每个Reduce函数所需的数据分片临时文件。Map函数完成对应数据块的处理后将其R个临时文件位置通知Master，再由Master将其转交给Reduce任务的Worker。<br>5.当某个Reduce任务Worker接收到Master的通知时，其通过RPC远程调用将Map任务产生的M份属于自己的数据文件远程拉取到本地。从这里可以看出，只有所有Map任务都完成时Reduce任务才能启动。当所有中间数据都拉取成功，则Reduce任务根据中间数据的Key对所有记录进行排序，这样就可以将具有相同Key的记录顺序聚合在一起。<br>6.Reduce任务Worker将排序好的数据，将同一个Key及其对应的多个Value传递给用户定义的Reduce函数，Reduce 函数执行业务逻辑后将结果追加到这个Reduce任务对应的结果文件末尾。<br>7.MapReduce运行结束。</p>
+<p>优化执行效率，MapReduce计算框架在Map阶段还可以执行可选的<strong>Combiner操作</strong>，即是在Map阶段执行的将中间数据中具有相同Key的Value值合并的过程，其业务逻辑一般和Reduce阶段的逻辑是相似的，减少中间数据数量，减少了网络传输量，提高了系统效率。</p>
+<h3><span id="rong-cuo-ji-zhi">容错机制</span><a href="#rong-cuo-ji-zhi" class="header-anchor">#</a></h3><p>Google的MapReduce框架支持细粒度的容错机制。Master周期性地Ping各个Worker，如果在一定时间内Worker没有响应，则可以认为其已经发生故障。此时将由这个Worker已经完成的和正在进行的所有Map任务重新设置为Idle状态，这些任务将由其他Worker重新执行<br>将已经完成的任务也重新执行，是因为Map阶段将中间结果保存在执行 Map任务的Worker机器本地磁盘上，Map任务的Worker发生故障意味着机器不可用，所以无法获取中间结果，此时只能重新执行来获得这部分中间数据。对于已经完成的Reduce任务来说，即使Worker发生故障也无须重新执行，因为其结果数据是保存在GFS中的，数据可用性已经由GFS获得了保证。</p>
+<h3><span id="mapreduce-ji-suan-de-bu-zu">MapReduce计算的不足</span><a href="#mapreduce-ji-suan-de-bu-zu" class="header-anchor">#</a></h3><p>①无高层抽象数据操作语言、②数据无 Schema 及索引、③单节点效率低下、④任务流描述方法单一（可考虑扩展为DAG模型）。</p>
+<p>MRS并不适合对时效性要求较高的应用场景，比如交互式查询或者流式计算，也不适合迭代运算类的机器学习及数据挖掘类应用，主要原因有以下两点：<br>①其 Map和Reduce任务启动时间较长。对于时效性要求高的应用，其启动时间与任务处理时间相比就太高，明显很不合算。<br>②在一次应用任务执行过程中，MapReduce 计算模型存在多处的磁盘读/写及网络传输过程。</p>
+<h2><span id="mapreduce-ji-suan-mo-shi">MapReduce计算模式</span><a href="#mapreduce-ji-suan-mo-shi" class="header-anchor">#</a></h2><h3><span id="qiu-he-mo-shi">求和模式</span><a href="#qiu-he-mo-shi" class="header-anchor">#</a></h3><p>求和模式即描述这类应用场景及其对应的MapReduce解决方案，根据求和对象的类型，可以细分为①数值求和、②记录求和两种情况。<br><strong>1.数值求和</strong><br>包括简单计数、求最小值/最大值、求平均值/中位数等各种情况。<br>1.Mapper以需要统计对象的ID作为Key，其对应的数值作为Value，比如单词计数中Key为单词本身，Value为1。在此种应用中如果使用Combiner会极大地减少Shuffle（拖曳）阶段的网络传输量。<br>另外，Partitioner在这种应用中如何设计也很重要，一般的策略是对Reducer个数哈希取模，但是这可能会导致数据分布倾斜（Skewed），即有些Reducer 需要处理大量的信息，如果能够合理选择Partitioner策略会优化此种情形。<br>2.通过 Shuffle阶段，MapReduce将相同对象传递给同一个Reducer，Reducer则对相同对象的若干Value进行数学统计计算，得到最终结果。</p>
+<p><strong>2.记录求和</strong><br>往往需要将非数值内容进行累加形成队列，一般应用中累加内容是对象的ID。其与数值求和流程基本类似，区别主要是在Reducer阶段采用累加对象ID形成信息队列。</p>
+<h3><span id="guo-lu-mo-shi">过滤模式</span><a href="#guo-lu-mo-shi" class="header-anchor">#</a></h3><p>数据过滤也是非常常见的应用场景，很多情形下，需要从海量数据中筛选出满足一定条件的数据子集，这就是典型的数据过滤应用场景。<br><strong>1.简单过滤</strong><br>简单过滤即根据一定条件从海量数据中筛选出满足条件的记录。<br>因为这类应用不需要对数据进行聚合等操作，所以无须Reduce阶段。Mapper 从数据块中依次读入记录，并根据条件判断函数f判断该记录是否满足指定条件，如果满足则输出结果。<br><strong>2.Top10</strong><br>从大量数据中，根据记录某个字段内容的大小取出其值最大的k个记录，这也是非常常见的数据过滤应用场景<br>和简单过滤的差异∶简单过滤的条件判断只涉及当前记录，而Top k计算模式则需要在记录之间进行比较，并获得全局最大的数据子集<br>可以首先使用数值求和计算模式的MapReduce任务统计出当日搜索日志中每个查询的频次，再串接一个Top 10数据过滤计算模式的MapReduce任务即可得出所需的数据。<br>其<strong>基本思路</strong>很简单∶<br>            ①Mapper首先统计出数据块内所有记录中某个字段满足Top 10条件的记录子集，不过这只是局部Top 10记录；<br>            ②然后通过Reducer对这些局部Top 10记录进一步筛选，获得最终的全局最大的10条记录。<br>在这里Mapper和Reducer的处理逻辑是类似的，即找到数据集合中指定字段最大的若干记录，在实际使用中可以使用排序算法来实现，比如堆排序。</p>
+<h3><span id="zu-zhi-shu-ju-mo-shi">组织数据模式</span><a href="#zu-zhi-shu-ju-mo-shi" class="header-anchor">#</a></h3><p>很多应用需要对数据进行整理工作，比如转换数据格式、对数据进行分组归类、对数据进行全局排序等，这是组织数据模式发挥作用的应用场景。<br><strong>1.数据分片</strong><br>需要对数据记录进行分类，比如可以将所有记录按照日期进行分类，将同一天的数据放到一起以进一步做后续数据分析;再比如可以将相同地区的记录分类到一起等。因为MapReduce计算流程中天然具有Partition 过程，所以对于这类应用，MapReduce方案的工作重心在Partition策略设计上。<br><strong>具体过程</strong><br>一般情况下，Mapper 和 Reducer 非常简单，只需要将原始KV输入数据原样输出即可，其重点在Partitioner策略的设计，通过改变Partition策略来将相同标准的数据经过Shuffle过程放到一起，由同一个 Reducer 来输出，这样即可达到按需数据分片的目的。<br><strong>2.全局排序</strong><br>在 Reduce 阶段需要首先将中间数据按照其Key大小进行排序，目的是将相同 Key的记录聚合到一起，所以对于全局排序类应用可以直接利用这个内置排序过程。<br><strong>具体过程</strong><br>Mapper逻辑很简单，只需要将记录中要排序的字段作为Key，记录内容作为Value输出即可。①如果设定一个Reducer，那么Reduce过程不需要做额外工作，只需以原样输出即可，因为Reduce过程已经对所有数据进行了全局排序。②但是如果设定多个Reducer，可以通过Partition策略，在将数据分发到不同Reducer 的时候，保证不同Reducer处理一个范围区间的记录，这样将所有结果顺序拼接即可得到全局有序的记录。</p>
+<h3><span id="join-mo-shi">Join模式</span><a href="#join-mo-shi" class="header-anchor">#</a></h3><p>两个数据集合进行 Join 操作也较常见。”Join”：是将两个不同数据集合内容根据相同外键进行信息融合的过程。<br>常见的Join包括Reduce-Side Join和Map-Side Join。<br><strong>1.Reduce-Side Join</strong><br>简单易实现，通用性，缺点计算效率低<br>①Mapper将两个数据集合A和B的记录进行处理，抽取出需要Join的外键作为Key，记录的其他内容作为Value输出，为了解决在Reduce阶段进行实际Join操作的时候判断数据来源的问题，可以增加一个标志信息，表明这条记录属于数据集合A还是属于数据集合B，实际实现时可将这个标记信息存储在Value 中。<br>②通过正常的Partition策略并经过Shuffle过程，两个数据集合中具有相同外键的记录都被分配到同一个Reducer，Reducer根据外键排序后可以将同一个外键的所有记录聚合在一起。<br>③Reducer根据标识信息区分数据来源，并维护两个列表（或哈希表），分别存储来自于数据集合A以及数据集合B的记录内容，然后即可对数据进行Join操作并输出结果。<br><strong>2.Map-Side Join</strong><br>针对以下场景进行的优化：两个待连接表中，有一个表非常大，而另一个表非常小，以至于小表可以直接存放到内存中。<br>可以将小表复制多份，让每个map在task内存中存在一份（比如存放到hash table中），然后只扫描大表：对于大表中的每一条记录key/value，在hash table中查找是否有相同的key的记录，如果有，则连接后输出即可。<br>但是其必须满足R小到可以在内存存储这一前提条件。效率高</p>
+<h1><span id="di-qi-zhang-da-shu-ju-ji-zhu-zhuan-ti">第七章大数据技术专题</span><a href="#di-qi-zhang-da-shu-ju-ji-zhu-zhuan-ti" class="header-anchor">#</a></h1><h2><span id="flink-liu-pi-yi-ti-fen-bu-shi-shi-shi-chu-li-yin-qing-yuan-li-ji-jia-gou">Flink流批一体分布式实时处理引擎–原理及架构</span><a href="#flink-liu-pi-yi-ti-fen-bu-shi-shi-shi-chu-li-yin-qing-yuan-li-ji-jia-gou" class="header-anchor">#</a></h2><p>Flink是为分布式，高性能的流处理应用打造的开源流处理框架，不仅能提供同时支持高吞吐和exctly-once语义的实时计算，还能提供批量数据处理。<br>采用的是<strong>基于流计算来模拟批处理</strong>。<br>四个关键概念：流数据的连续处理，事件时间，有状态流处理，状态快照<br>内置的状态管理，可以把状态存储在Flink内部，而不需要把它存储在外部系统。这样做的好处：降低了计算引擎对外部系统的依赖，使得部署、运维更加简单；对性能带来了极大的提升。</p>
+<h3><span id="he-xin-li-nian">核心理念</span><a href="#he-xin-li-nian" class="header-anchor">#</a></h3><p><strong>DataStream</strong> Flink用类DataStream来表示程序中的流式数据。用户可以认为它们是含有重复数据的不可修改的集合，DataStream中元素的数量是无限的。<br><strong>DataSet</strong><br>可对数据集进行转换（例如，过滤，映射，联接，分组），或通过读取文件或 从本地集合创建数据集。结果通过接收器返回，接收器可以将数据写入（分布式）文件 或标准输出（例如命令行终端）。</p>
+<h3><span id="flink-cheng-xu">Flink程序</span><a href="#flink-cheng-xu" class="header-anchor">#</a></h3><p>Flink程序由Source、Transformation和Sink三部分组成<br>Source主要负责数据的读取，支持HDFS、kafka和文本等；Transformation主要负责对数据的转换操作；Sink负责最终数据的输出，支持HDFS、kafka和文本输出等。在各部分之间流转的数据称为流。</p>
+<h3><span id="flink-shu-ju-yuan">Flink数据源</span><a href="#flink-shu-ju-yuan" class="header-anchor">#</a></h3><p>批处理，，，流处理，，，</p>
+<h3><span id="flink-zuo-ye-yun-xing-liu-cheng">Flink作业运行流程</span><a href="#flink-zuo-ye-yun-xing-liu-cheng" class="header-anchor">#</a></h3><p>1.用户首先提交Flink 程序到JobClient ， 经过JobClient 的处理、解析、优化提交到JobManager，最后由TaskManager运行task。<br>2.<strong>JobClient</strong>是Flink程序和JobManager交互的桥梁。主要负责接收程序、解析程序的执行 计划、优化程序的执行计划，然后提交执行计划到JobManager。（Flink三类Operator，Source Operator：数据源操作，Transformation Operator：数据转换操作，Sink Operator：数据存储操作）</p>
+<h3><span id="flink-de-shu-ju-chu-li">Flink的数据处理</span><a href="#flink-de-shu-ju-chu-li" class="header-anchor">#</a></h3><p>Flink同时支持批处理和流处理，也能用来做一些基于事件的应用。<br>Flink是一个纯流式的计算引擎，它的基本数据模型是数据流。流可以是无边界的无限流，  即一般意义上的流处理。也可以是<strong>有边界的有限流，就是批处理</strong>。因此Flink用一套架构同时支 持了流处理和批处理。（无界流：有定义流的开始，但没有定义流的结束。有界流：有定义流的开始，也有定义流的结束。）<br>Flink的一个优势是支持有状态的计算。如果处理一个事件（或一条数据）的结果只跟事 件本身的内容有关，称为无状态处理；反之结果还和之前处理过的事件有关，称为有状态处理。</p>
+<h3><span id="pi-chu-li-jie-shi">批处理解释</span><a href="#pi-chu-li-jie-shi" class="header-anchor">#</a></h3><p>在流处理中，我们为数据定义滑动窗口或滚动 窗口，并且在每次窗口滑动或滚动时生成结果。批处理则不同，我们定义一个全局窗口，  所有的记录都属于同一个窗口。</p>
+<h3><span id="flink-pi-chu-li-mo-xing">Flink批处理模型</span><a href="#flink-pi-chu-li-mo-xing" class="header-anchor">#</a></h3><p>Flink通过一个底层引擎同时支持流处理和批处理。</p>
+<h3><span id="liu-yu-pi-chu-li-ji-zhi">流与批处理机制</span><a href="#liu-yu-pi-chu-li-ji-zhi" class="header-anchor">#</a></h3><p>Flink的两套机制分别对应各自的API（DataStream API 和DataSet API），在创建 Flink作业时，并不能通过将两者混合在一起来同时利用Flink的所有功能。<br>支持两种关系型的API，Table API和SQL。这两个API都是批处理和流处理统一的 API，这意味着在无边界的实时数据流和有边界的历史记录数据流上，关系型API会以相 同的语义执行查询，并产生相同的结果。<br>Table API / SQL正在以流批统一的方式成为分析型用例的主要API。<br>DataStream API是数据驱动应用程序和数据管道的主要API。</p>
+<h2><span id="flink-de-time-yu-window">Flink的Time与Window</span><a href="#flink-de-time-yu-window" class="header-anchor">#</a></h2><h3><span id="shi-jian-bei-jing-shi-jian-fen-lei">时间背景，时间分类</span><a href="#shi-jian-bei-jing-shi-jian-fen-lei" class="header-anchor">#</a></h3><p>在流处理器编程中，对于时间的处理是非常关键的。<br>在数据流处理过程中，我们经常使用系统时间即：processing time作为某个事件的时间，由于网络延迟等原因并不能较好的反应事件之间发生的先后顺序<br><strong>在实际场景中，每个事件的时间可以分为三种：</strong><br>event time，即事件发生时的时间；<br>ingestion time，即事件到达流处理系统的时间；<br>processing time，即事件被系统处理的时间。<br><strong>三种时间的区别</strong><br>事件真正发生的先后顺序与系统时间存在一定的差异，这些差异主要由网络 延迟、处理时间的长短等造成。理想情况下，event  time和processing time构成的坐标应该 形成一条倾斜角为45度的线。但实际应用 过程中，processing time要落后与event  time，造成事件到来的先后顺序不一致。</p>
+<p><strong>时间语义</strong>Processing Time：真实世界的时间，处理数据节点的本地时间，处理简单，结果不确定（无法重现)。Event Time：数据世界的时间，记录携带的Timestamp，处理复杂，结果确定（可重现)。</p>
+<h3><span id="window-gai-shu">Window概述</span><a href="#window-gai-shu" class="header-anchor">#</a></h3><p>Window是一种切割无限数据为有限块进行处理的手段。<br>Window是无限数据流处理的核心，它将一个无限的stream拆分成有限大小的”buckets”桶，我们可以在这些桶上做计算操作。<br><strong>Window类型</strong><br>CountWindow：数据驱动，按照指定的数据条数生成一个Window，与时间无关。<br>TimeWindow：时间驱动，按照时间生成Window。</p>
+<p>Flink 中 Window可以是Time Window，也可以是Count Window。<br><strong>TimeWindow分类</strong><br>TimeWindow可以根据窗口实现原理的不同分成三类：滚动窗口、 滑动窗口和会话窗口。<br><strong>滚动窗口</strong><br>将数据依据固定的窗口长度对数据进行切片。特点：时间对齐，窗口长度固定，没有重叠。<br><strong>滑动窗口</strong><br>滑动窗口是固定窗口的更广义的一种形式，滑动窗口由固定的窗口长度和滑动间隔组成。特点：时间对齐，  窗口长度固定，有重叠。</p>
+<p><strong>会话窗口</strong><br>会话窗口由一系列事件组合一个指定时间长度的timeout间隙组成，类似于web应用的session，也就是一段时间没有接收到新数据就会生成新的窗口。特点：时间无对齐。</p>
+<h1><span id="di-jiu-zhang-gua-yong-yu-da-shu-ju-de-xin-xing-shu-ju-ku-jian-jie">第九章 适用于大数据的新型数据库简介</span><a href="#di-jiu-zhang-gua-yong-yu-da-shu-ju-de-xin-xing-shu-ju-ku-jian-jie" class="header-anchor">#</a></h1><p>在某些应用场景下，为了大大提升服务的响应速度，可以考虑将数据全部加载到内存、而这涉及内存数据库的设计和实现。本章内存KV数据库。</p>
+<h2><span id="ramcloud">RAMCloud</span><a href="#ramcloud" class="header-anchor">#</a></h2><p>RAMCloud是大规模集群下的纯内存KV数据库系统，最大的特点是读写效率高，RAMCloud 在提升系统性能基础上，重点关注数据的持久化与保证数据高可用性措施，为了节省系统成本，只在服务器内存放置一份原始数据，同时将数据备份存储在集群其他服务器的外存中</p>
+<h3><span id="ramcloud-zheng-ti-jia-gou">RAMCloud整体架构</span><a href="#ramcloud-zheng-ti-jia-gou" class="header-anchor">#</a></h3><p>存储服务器由高速网络连接，每台存储服务器包含两个构件∶Master和Backup。<br>Master负责内存KV数据的存储并响应客户端读写请求；<br>Backup负责在外存存储管理其他服务器节点内存数据的数据备份。</p>
+<p>协调器（Coordinator)：每个RAMCloud集群内包含唯一的管理节点。协调器记载集群中的一些配置信息，比如各个存储服务器的IP地址等，另外还负责维护存储对象和存储服务器的映射关系，即某个存储对象是放在哪台服务器的。<br>RAMCloud的存储管理单位是子表（Tablet)，即若干个主键有序的存储对象构成的集合，所以协调器记载的其实是子表和存储服务器之间的映射关系。</p>
+<p>为了增加读/写效率，客户端在本地缓存一份子表和存储服务器的映射表，但是这会导致以下问题∶当子表被协调器迁移后，客户端的缓存映射表会过期。<br>RAMCloud的解决方案为∶当客户端发现读取的记录不在某台存储服务器时，说明本地缓存过期，此时可以从协调器重新同步一份最新的映射表，之后可以重新对数据进行操作。</p>
+<h3><span id="shu-ju-fu-ben-guan-li-yu-shu-ju-hui-fu">数据副本管理与数据恢复</span><a href="#shu-ju-fu-ben-guan-li-yu-shu-ju-hui-fu" class="header-anchor">#</a></h3><p>对于RAMCloud这种内存单备份的系统尤为重要的一点是即使服务器发生故障，内存数据丢失，也不至于导致数据丢失，即数据持久化问题。为了能够支持快速数据持久化以及故障时快速数据恢复，RAMCloud在内存和外存存储数据时都统一采用了LSM树方案，其对应的Log结构被切割为8MB大小的数据片段（Segment）。<br><strong>写数据</strong><br>①将其追加进入内存中的Log结构中，然后更新哈希表以记载记录在内存中的存储位置，这里之所以会需要哈希表，是因为内存数据采取LSM树结构后，是由若干个Log片段构成的，所以需要记载记录所在Log片段的位置信息。<br>②RAMCloud的主数据服务器将新数据转发给其他备份服务器，备份服务器将新数据追加到内存中Log片段后即通知主数据服务器返回，主数据服务器此时即可通知客户端写操作成功。因为整个备份过程都是内存操作不涉及外存读/写，所以这样做速度较快。当备份服务器用于备份的Log片段写满时将其写入外存的LSM结构中。</p>
+<p>以上是RAMCloud的数据备份策略，其主要目的是通过内存数据备份避免磁盘读写来加快其过程。<br><strong>恢复数据机制</strong><br>①是将待备份的数据尽可能多地分散到不同备份服务器中，这样在恢复内存数据的时候每台备份服务器只需传递少量数据，增加并发性。<br>②是将待重建的内存数据分散到多台存储服务器来恢复，这样也减少了每台服务器需要恢复的数据量，增加并发性。通过以上两种措施可以实现快速数据恢复，RAMCloud可以在1秒之内恢复崩溃的内存数据。</p>
+<h2><span id="membase">MemBase</span><a href="#membase" class="header-anchor">#</a></h2><p>MemBase是集群环境下的内存KV数据库，目前已更名为CouchBase。<br>MemBase通过”虚拟桶”的方式对数据进行分片，其将所有数据的主键空间映射到4096个虚拟桶中，并在”虚拟桶映射表”中记载每个虚拟桶主数据及副本数据的机器地址，MemBase对”虚拟桶映射表”的更改采用两阶段提交协议来保证其原子性。<br>MemBase 中的所有服务器都是地位平等的，并不存在一个专门进行管理功能的Master服务器， 但是其数据副本管理采用了Master-Slave模式。<br>每个虚拟桶有一台服务器作为主数据存储地、这台服务器负责响应客户端请求，副本存放在其他服务器内存中，其副本个数可以通过配置来指定。<br>客户端在本地缓存一份”虚拟桶映射表”，所以通过哈希函数以及这个映射表可以直接找到主数据及副本数据的机器地址。<br><strong>读写</strong><br>客户端直接和存放主数据的服务器建立联系来读写数据，如果发现连接上的服务器不是这个记录的主数据服务器，说明本地的”虚拟桶映射表”过期，则重新同步一份数据后再次发出请求。<br>如果是读请求，则主数据服务器直接可以响应请求。如果是写请求，则主数据服务器以同步的方式将写请求转发给所有备份数据服务器，如果所有备份数据写成功则写操作成功完成。因为是同步写，所以可以保证数据的强一致性。<br><strong>若发现某个虚拟桶发生故障</strong><br>①从其他存有备份数据的服务器中选择一个，以其作为这个 “虚拟桶”新的主数据存储地。<br>②所有对该”虚拟桶”的请求由其接管响应。<br>③更新”虚拟桶映射表”，将旧的主数据服务器标为失效，并标明新选出的服务器作为主数据存储地，然后以广播方式将新的”虚拟桶映射表”通知给所有其他节点。<br>④当发生故障的服务器再次启动加入集群时，其同步更新内存数据并将自身设定为”虚拟桶”的副本。</p>
+<p>缺点是所有副本数据放在内存，所以存储成本较高。改进措施可以考虑如下∶在目前MemBase方案基础上集成LSM树存储系统</p>
+<h3><span id="redis">Redis</span><a href="#redis" class="header-anchor">#</a></h3><p>不仅支持基本数据类型，也支持列表、集合等复杂数据结构，所以有较强的表达能力，同时有非常高的单机读/写效率。<br><strong>副本维护策略</strong><br>系统中唯一的Master负责数据的读/写操作，可以有多个Slave来保存数据副本，副本数据只能读不能做数据更新操作。</p>
+<p>当 Slave初次启动时，从Master获取数据，在数据复制过程中，Master是非阻塞的，即同时可以支持读/写操作。<br>Master 采用快照加增量的异步方式完成数据复制过程，如T时刻传入数据，先存为本地快照，并从内存记录从此刻开始的数据操作，快照结束后传给Slave节点，并且传入T时刻之后的数据操作，来保持同步。</p>
+<p>如果Master和Slave之间的连接因某种原因中断，在2.8版之前，Slave再次和Master建立连接后需要完全重新复制一遍数据，2.8版本对此进行了改进，支持增量更新。<br><em>Master在内存维护命令流记录，同时，Master和Slave都记载上次复制时的命令流地址（Offset），当Slave重新连接Master 时，Master 可以根据地址偏移量将增量更新传递给 Slave。</em><br>由于Redis的主从复制采用异步方式，所以Master接收到数据更新操作与Slave接收到数据副本有一个时间差，这样如果Master发生故障可能会导致数据丢失。<br>因为Redis并未支持主从自动切换，如果Master故障，很明显此时系统对外表现为只读不能写入。</p>
+<p>至于其高可用方案则和上述2.8版本的HA思路基本一致，只是增加了Master故障时主备自动切换机制。<br>①一方面由于主备数据之间仍旧采用异步同步机制，所以在Master故障时仍有丢失数据的可能，这可能是 Redis的作者出于不牺牲写性能而做出的设计取舍;<br>②另外一方面，在主备切换时，尽管基本思路很简单∶当Master 发生故障时，负责其他数据分片的多个Master投票从若干个Slave机器中选出一个Slave作为新的Master，但是其整个投票机制复杂且不够优雅。</p>
+<h1><span id="di-shi-zhang-hadoop-ji-chu-ji-zhu">第十章Hadoop基础技术</span><a href="#di-shi-zhang-hadoop-ji-chu-ji-zhu" class="header-anchor">#</a></h1><p>大数据的巨量性、多 样性、时效性、准确性等特性都要求我们需要有一个性能稳定、信息安全的基础平台作 为支撑。为了管理集群中的数据与资源的访问控制权限，华为大数据平台实现了一种基 于LDAP和Kerberos技术的高可靠集群安全模式，提供一体化安全认证功能。</p>
+<h2><span id="tong-yi-shen-fen-ren-zheng">统一身份认证</span><a href="#tong-yi-shen-fen-ren-zheng" class="header-anchor">#</a></h2><p>统一身份认证就类似于游乐园的通行规则一样，游客可以 通过一个通行证（秘钥）来畅玩授权过的游乐项目。<br>利用统一的认证服务能够更好的管理用户的身份认证及会 话管理等。</p>
+<p>在大数据平台中通过统一用户管理系统,可以实现平台中的各种开源组件应用系统的用户、角色和 组织机构统一化管理，实现各种应用系统间跨域的单点登录登出和统一的身份认证功能。用户管理系统的主要功能特性如下：用户管理 用户认证 单点登录 分级管理 权限管理 会话管理 兼容多种操作系统<br>目前，绝大多数厂商的统一认证管理系统都是由统一认证管理模块，统一身份认证服务器， 身份信息存储服务器这三大部分组成。</p>
+<p>华为大数据解决方案中，通过基于开源 的OpenLDAP的身份认证的管理和存储技术以及Kerberos统一身份认证技术，实现了一种能 够通过WebUI进行集群中的数据与资源访问控制权限管理。</p>
+<h2><span id="kafka-ji-zhu-yuan-li">Kafka技术原理</span><a href="#kafka-ji-zhu-yuan-li" class="header-anchor">#</a></h2><p>Kafka是最初由Linkedin公司开发，是一个分布式、分区的、多副本的、多订阅者，基于 zookeeper协调的分布式日志系统。<br>主要应用场景是：日志收集系统和消息系统。<br>分布式消息传递基于可靠的消息队列，在客户端应用和消息系统之间异步传递消息。有两种主要的消息传递模式：点对点传递模式、发布-订阅模式。Kafka就是一种发布-订阅模式。<br><strong>点对点消息传递模式</strong><br>在点对点消息系统中，消息持久化到一个队列中。此时，将有一个或多个消费者消费队列 中的数据。但是一条消息只能被消费一次。当一个消费者消费了队列中的某条数据之后，该条数据则从消息队列中删除。该模式即使有多个消费者同时消费数据，也能保证数据处 理的顺序。<br><strong>发布-订阅消息模式</strong><br>发布-订阅消息系统中，消息被持久化到一个topic中。与点对点消息系统不同的是，消费 者可以订阅一个或多个topic，消费者可以消费该topic中所有的数据，同一条数据可以被多 个消费者消费，数据被消费后不会立马删除。在发布-订阅消息系统中，消息的生产者称为 发布者，消费者称为订阅者。<br><strong>Kafka特点</strong><br>以时间复杂度为O(1)的方式提供消息持久化能力，即使对TB级以上数据也能保证常数时间 的访问性能。<br>高吞吐率。即使在廉价的商用机器上也能做到单机支持每秒100K条消息的传输。<br>支持消息分区，及分布式消费，同时保证每个分区内消息顺序传输。<br>同时支持离线数据处理和实时数据处理。<br>Scale out：支持在线水平扩展</p>
+<h1><span id="di-shi-yi-zhang-liu-shi-ji-suan-he-jiao-hu-shi-shu-ju-fen-xi-jian-jie">第十一章流式计算和交互式数据分析简介</span><a href="#di-shi-yi-zhang-liu-shi-ji-suan-he-jiao-hu-shi-shu-ju-fen-xi-jian-jie" class="header-anchor">#</a></h1><p>流式计算（Stream Processing）是越来越受到重视的一个计算领域。在很多应用场所，对大数据处理的计算时效性要求很高，要求计算能够在非常短的时延（Low Latency）内完成，这样能够更好地发挥流式计算系统的威力<br><strong>连续查询处理</strong><br>往往是数据流管理系统（DSMS）必须要实现的功能，一般用户输入SQL查询语句后，数据流按照时间先后顺序被切割成数据窗口，DSMS 在连续流动的数据窗口中执行用户提交的SQL语句，并实时返回查询结果。<br><strong>“可扩展数据流平台类”</strong><br>其设计初衷都是出于模仿 MapReduce 计算框架的思路，即在对处理时效性有高要求的计算场景下，如何提供一个完善的计算框架，并暴露给用户少量的编程接口，使得用户能够集中精力处理应用逻辑。<br>与批处理计算系统、图计算系统等相比，流式计算系统有其独特性。优秀的流式计算系统应该具备以下特点。<br>（1）记录处理低延迟<br>（2）极佳的系统容错性<br>（3）极强的系统扩展能力<br>（4）灵活强大的应用逻辑表达能力（1.流式计算任务都会被部署成由多个计算节点和流经这些节点的数据流构成的有向无环图（DAG），所以灵活性的一方面就体现在应用逻辑在描述其具体的DAG任务时，以及为了实现负载均衡而需要考虑的并发性等方面的实现便捷性。2.流式计算系统提供的操作原语的多样性，传统的连续查询处理类的流式计算系统往往是提供类SQL的查询语言，这在很多互联网应用场景下表达能力不足。）</p>
+<p>各种SQL-On-Hadoop系统进行归类梳理，根据其整体技术框架和技术路线的差异，将其分为以下四类。<br>1.Hive系<br>Hive是直接构建在Hadoop之上的早期提出的数据仓库系统，也是目前使用最广泛的SQL-On-Hadoop产品<br>2.Shark系<br>在Spark系统之上的数据仓库系统。Spark是非常适合解决迭代式机器学习问题的大数据处理系统，之所以说是优点，是因为Shark 可以很方便地将数据加载入内存进行处理，并且支持除SQL外的复杂的机器学习处理，之所以说是缺陷，是因为和Hive一样，与底层系统耦合过紧。<br>3.Dremel系<br>4.混合系<br>混合系是直接将传统的关系数据库系统和Hadoop进行有机混合而构造出的大规模数据仓库，其中，HadoopDB是最具代表性的。</p>
+<h2><span id="hive-shu-ju-cang-ku">Hive数据仓库</span><a href="#hive-shu-ju-cang-ku" class="header-anchor">#</a></h2><p>Hive是最早出现的架构在Hadoop基础之上的大规模数据仓库之一，Hadoop为其带来很大的优势，比如，大规模数据的可扩展性、细粒度的容错机制等，但是也是约束其性能的重要因素。<br>Hive是构建在Hadoop基础之上的数据仓库解决方案，与传统的数据仓库系统相比，Hive能够处理超大规模的数据且有更好的容错性。<br>Hive的本质思想可以看作是：为Hadoop里存储的数据增加模式（Schema），并为用户提供类SQL语言，Hive将类SQL语言转换为一系列MR任务来实现数据的处理，以此手段来达到便利操作数据仓库的目的。<br>Hive的诟病有很多，主要是其处理效率不够高，这主要是因为Hive和Hadoop的绑定关系太紧密导致的</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/12/Termux-nethunter%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0-%E5%85%B3%E4%BA%8ETermux%E5%85%8DROOT%E5%AE%89%E8%A3%85kali-nethunter/" rel="prev" title="Termux nethunter踩坑日记--关于Termux免ROOT安装kali nethunter">
+      <i class="fa fa-chevron-left"></i> Termux nethunter踩坑日记--关于Termux免ROOT安装kali nethunter
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/07/22/Termux%E5%AE%89%E8%A3%85kali-nethunter%E7%9A%84%E5%85%A8%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E6%8E%A8%E8%8D%90%E4%B8%8E%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%83%A8%E7%BD%B2%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E6%A1%86%E6%9E%B6MITMF/" rel="next" title="Termux安装kali nethunter的全自动安装推荐与移动端部署中间人攻击框架MITMF">
+      Termux安装kali nethunter的全自动安装推荐与移动端部署中间人攻击框架MITMF <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">武汉理工大学大数据模式与架构期末复习(按知识点删减版)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">大数据概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">大数据来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">大数据的特征及意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">大数据的表现形态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.5.</span> <span class="nav-text">大数据的应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.6.</span> <span class="nav-text">大数据的发展趋势与鲲鹏大数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.1.</span> <span class="nav-text">大数据时代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.2.</span> <span class="nav-text">大数据计算任务类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.3.</span> <span class="nav-text">大数据的主要计算模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.4.</span> <span class="nav-text">企业面临的挑战与机遇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.5.</span> <span class="nav-text">鲲鹏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.6.</span> <span class="nav-text">华为大数据解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">第二章 数据准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">网页采集，爬虫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">数据分片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">数据复制与一致性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.1.</span> <span class="nav-text">一致性模型分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.2.</span> <span class="nav-text">*副本更新策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.3.</span> <span class="nav-text">一致性协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.4.</span> <span class="nav-text">Paxos协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.5.</span> <span class="nav-text">Raft协议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">第三章大数据常用算法与数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">布隆过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">跳表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.1.</span> <span class="nav-text">插入操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.2.</span> <span class="nav-text">删除操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.3.</span> <span class="nav-text">LSM树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.3.1.</span> <span class="nav-text">文件作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.3.2.</span> <span class="nav-text">*Compaction机制（还没看）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">第四章分布式文件系统（HDFS与ZooKeeper和GFS）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.1.</span> <span class="nav-text">GFS系统（谷歌）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.1.</span> <span class="nav-text">设计原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.2.</span> <span class="nav-text">整体架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.3.</span> <span class="nav-text">GFS主控服务器（元数据以及对应管理功能）元数据为数据的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.4.</span> <span class="nav-text">系统交互行为</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.2.</span> <span class="nav-text">HDFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.2.1.</span> <span class="nav-text">主要组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.2.2.</span> <span class="nav-text">HA架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.2.3.</span> <span class="nav-text">主从切换（Namenode主备切换）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.2.4.</span> <span class="nav-text">NameNode联盟</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">第五章集群资源管理调度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.1.</span> <span class="nav-text">资源管理抽象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.1.1.</span> <span class="nav-text">概念模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.1.2.</span> <span class="nav-text">通用架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.2.</span> <span class="nav-text">调度系统设计的基本问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.2.1.</span> <span class="nav-text">资源异质性与工作负载异质性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.2.2.</span> <span class="nav-text">数据局部性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.2.3.</span> <span class="nav-text">抢占式调度与非抢占式调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.2.4.</span> <span class="nav-text">资源分配粒度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.2.5.</span> <span class="nav-text">饿死与死锁问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.2.6.</span> <span class="nav-text">资源隔离方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.3.</span> <span class="nav-text">资源管理与调度系统范型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.3.1.</span> <span class="nav-text">集中式调度器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.3.2.</span> <span class="nav-text">两级调度器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.3.3.</span> <span class="nav-text">状态共享调度器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.4.</span> <span class="nav-text">资源调度策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.4.1.</span> <span class="nav-text">FIFO调度策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.4.2.</span> <span class="nav-text">公平调度器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.4.3.</span> <span class="nav-text">能力调度器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.4.4.</span> <span class="nav-text">延迟调度策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.4.5.</span> <span class="nav-text">主资源公平调度策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.5.</span> <span class="nav-text">*Mesos</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">第六章大规模批处理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">7.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">7.2.</span> <span class="nav-text">MapReduce计算模型与架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.2.1.</span> <span class="nav-text">MapReduce过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.2.2.</span> <span class="nav-text">Map阶段详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.2.3.</span> <span class="nav-text">Reduce阶段详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.2.4.</span> <span class="nav-text">Shuffle过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.2.5.</span> <span class="nav-text">系统架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.2.6.</span> <span class="nav-text">容错机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.2.7.</span> <span class="nav-text">MapReduce计算的不足</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">7.3.</span> <span class="nav-text">MapReduce计算模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.3.1.</span> <span class="nav-text">求和模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.3.2.</span> <span class="nav-text">过滤模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.3.3.</span> <span class="nav-text">组织数据模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.3.4.</span> <span class="nav-text">Join模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">第七章大数据技术专题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.1.</span> <span class="nav-text">Flink流批一体分布式实时处理引擎–原理及架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.1.1.</span> <span class="nav-text">核心理念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.1.2.</span> <span class="nav-text">Flink程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.1.3.</span> <span class="nav-text">Flink数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.1.4.</span> <span class="nav-text">Flink作业运行流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.1.5.</span> <span class="nav-text">Flink的数据处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.1.6.</span> <span class="nav-text">批处理解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.1.7.</span> <span class="nav-text">Flink批处理模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.1.8.</span> <span class="nav-text">流与批处理机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">8.2.</span> <span class="nav-text">Flink的Time与Window</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.2.1.</span> <span class="nav-text">时间背景，时间分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.2.2.</span> <span class="nav-text">Window概述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">第九章 适用于大数据的新型数据库简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">9.1.</span> <span class="nav-text">RAMCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">9.1.1.</span> <span class="nav-text">RAMCloud整体架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">9.1.2.</span> <span class="nav-text">数据副本管理与数据恢复</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">9.2.</span> <span class="nav-text">MemBase</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">9.2.1.</span> <span class="nav-text">Redis</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">第十章Hadoop基础技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">10.1.</span> <span class="nav-text">统一身份认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">10.2.</span> <span class="nav-text">Kafka技术原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">第十一章流式计算和交互式数据分析简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">11.1.</span> <span class="nav-text">Hive数据仓库</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tr1ck"
+      src="/images/image1.jpg">
+  <p class="site-author-name" itemprop="name">Tr1ck</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tr1ck</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="true"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Termux安装kali nethunter的全自动安装推荐与移动端部署中间人攻击框架MITMF前言  在好几年前没有自动化安装nethunter的时候已经鼓捣过一次移动端安装了，当时废了好大一番功夫来的，转眼换了设备迁移的数据不可用，最近逛CSDN偶然发现了termux安装kali的自动化手段至福，于是迫不及待来试一试，顺便继续更深一步的部署安装，研究研究MITMF的中间人攻击框架。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Termux安装kali nethunter的全自动安装推荐与移动端部署中间人攻击框架MITMF">
+<meta property="og:url" content="http://example.com/2023/07/22/Termux%E5%AE%89%E8%A3%85kali-nethunter%E7%9A%84%E5%85%A8%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E6%8E%A8%E8%8D%90%E4%B8%8E%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%83%A8%E7%BD%B2%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E6%A1%86%E6%9E%B6MITMF/index.html">
+<meta property="og:site_name" content="Tr1ck amor">
+<meta property="og:description" content="Termux安装kali nethunter的全自动安装推荐与移动端部署中间人攻击框架MITMF前言  在好几年前没有自动化安装nethunter的时候已经鼓捣过一次移动端安装了，当时废了好大一番功夫来的，转眼换了设备迁移的数据不可用，最近逛CSDN偶然发现了termux安装kali的自动化手段至福，于是迫不及待来试一试，顺便继续更深一步的部署安装，研究研究MITMF的中间人攻击框架。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-22T10:31:21.000Z">
+<meta property="article:modified_time" content="2023-07-22T10:32:09.477Z">
+<meta property="article:author" content="Tr1ck">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2023/07/22/Termux%E5%AE%89%E8%A3%85kali-nethunter%E7%9A%84%E5%85%A8%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E6%8E%A8%E8%8D%90%E4%B8%8E%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%83%A8%E7%BD%B2%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E6%A1%86%E6%9E%B6MITMF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Termux安装kali nethunter的全自动安装推荐与移动端部署中间人攻击框架MITMF | Tr1ck amor</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <script src="/live2d-widget/autoload.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Tr1ck amor</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/22/Termux%E5%AE%89%E8%A3%85kali-nethunter%E7%9A%84%E5%85%A8%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E6%8E%A8%E8%8D%90%E4%B8%8E%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%83%A8%E7%BD%B2%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E6%A1%86%E6%9E%B6MITMF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/image1.jpg">
+      <meta itemprop="name" content="Tr1ck">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tr1ck amor">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Termux安装kali nethunter的全自动安装推荐与移动端部署中间人攻击框架MITMF
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-07-22 18:31:21 / Modified: 18:32:09" itemprop="dateCreated datePublished" datetime="2023-07-22T18:31:21+08:00">2023-07-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1><span id="termux-an-zhuang-kali-nethunter-de-quan-zi-dong-an-zhuang-tui-jian-yu-yi-dong-duan-bu-shu-zhong-jian-ren-gong-ji-kuang-jia-mitmf">Termux安装kali nethunter的全自动安装推荐与移动端部署中间人攻击框架MITMF</span><a href="#termux-an-zhuang-kali-nethunter-de-quan-zi-dong-an-zhuang-tui-jian-yu-yi-dong-duan-bu-shu-zhong-jian-ren-gong-ji-kuang-jia-mitmf" class="header-anchor">#</a></h1><h2><span id="qian-yan">前言</span><a href="#qian-yan" class="header-anchor">#</a></h2><p>  在好几年前没有自动化安装nethunter的时候已经鼓捣过一次移动端安装了，<del>当时废了好大一番功夫来的</del>，转眼换了设备迁移的数据不可用，最近逛CSDN偶然发现了termux安装kali的自动化手段<del>至福</del>，于是迫不及待来试一试，顺便继续更深一步的部署安装，研究研究MITMF的中间人攻击框架。 </p>
+<span id="more"></span>
+
+<h2><span id="zi-dong-hua-an-zhuang-kali-nethunter">自动化安装kali nethunter</span><a href="#zi-dong-hua-an-zhuang-kali-nethunter" class="header-anchor">#</a></h2><p>  本部分主要参考了CSDN上的<a target="_blank" rel="noopener" href="http://t.csdn.cn/VZY9T">这篇文章</a>，在此首先感谢原作者与自动化安装提供者的无私付出，让重新部署的我少走了好多弯路。<br>  <em>以下是正文</em><br>    首先，下载最新版的Termux终端，推荐前往F-Droid开源软件商店或者谷歌商店进行下载，==可能需要科学上网翻一下墙==，安装完成后，先来更新termux环境的软件包。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pkg update</span><br><span class="line">pkg upgrade</span><br></pre></td></tr></table></figure>
+
+<p>  然后安装git，由于本次借用地球一枝花的开源安装版本来自动安装kali minimum最小化版本，所以需要去安装git</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install git</span><br></pre></td></tr></table></figure>
+
+<p>  之后去对termux本体安装python与python2，来支持安装脚本的运行与kali的正常运行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pkg install python</span><br><span class="line">pkg install python2</span><br></pre></td></tr></table></figure>
+
+<p>  然后用git指令来安装kali minimum的最小化版本。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  git clone https://gitee.com/zhang-955/clone.git</span><br><span class="line">cd clone </span><br><span class="line">cd AutoInstallKali</span><br><span class="line">chmod +x kalinethunter finaltouchup.sh # 赋予脚本运行权限</span><br><span class="line">./kalinethunter</span><br></pre></td></tr></table></figure>
+
+<p>  之后等待脚本从官网拉取下载自动安装，接下来kali进行基础配置。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startkali # 开启kali</span><br></pre></td></tr></table></figure>
+
+<p>  仍然注意接下来几步先不要急着进入root，有部分软件依赖不可安装在root条件下。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  sudo apt update # sudo的默认密码为kali</span><br><span class="line">sudo apt full-upgrade -y</span><br></pre></td></tr></table></figure>
+
+<p>  系统软件包依赖更新完成后，来安装元数据包metapackage。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install -y kali-linux-default</span><br></pre></td></tr></table></figure>
+
+<p>  至此，kali nethunter安装成功。</p>
+<h2><span id="zai-kali-nethunter-bu-shu-mitmf-zhong-jian-ren-kuang-jia">在kali nethunter部署MITMF中间人框架</span><a href="#zai-kali-nethunter-bu-shu-mitmf-zhong-jian-ren-kuang-jia" class="header-anchor">#</a></h2><p>  本部分主要参考<a target="_blank" rel="noopener" href="http://t.csdn.cn/sGDNK">这篇文章</a>。<br>  首先，安装依赖。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python2-dev python-setuptools libpcap0.8-dev libnetfilter-queue-dev libssl-dev libjpeg-dev libxml2-dev libxslt1-dev libcapstone3 libcapstone-dev libffi-dev file</span><br></pre></td></tr></table></figure>
+
+<p>  在安装依赖的途中，本人遇到两个包无法安装，经过错误提示从安装语句中把无法安装的包删除，再次进行安装。<br>  然后请查询你是否安装了pip2，如果没有，先进行pip2的安装部署。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl  https://bootstrap.pypa.io/pip/2.7/get-pip.py  -o get-pip.py #拉取pip2包</span><br><span class="line">python2 get-pip.py #注意此处为python2，如若执行python环境下安装，会报错</span><br></pre></td></tr></table></figure>
+
+<p> 设置软链接。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /home/kali/.local/bin/pip2 /usr/bin/pip2</span><br></pre></td></tr></table></figure>
+
+<p> 安装一些必要的包。</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade setuptools</span><br></pre></td></tr></table></figure>
+
+<p>  至此，pip2配置成功，可以用pip2 –version命令检查pip2是否安装成功。<br>  然后使用pip2安装virtualenv。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip2 install virtualenvwrapper</span><br></pre></td></tr></table></figure>
+
+<p>  然后编辑您的.bashrc或.zshrc文件以获取 virtualenvwrapper.sh 脚本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /usr/local/bin/virtualenvwrapper.sh</span><br></pre></td></tr></table></figure>
+
+<p>  重新启动终端或者运行以下命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /usr/local/bin/virtualenvwrapper.sh</span><br></pre></td></tr></table></figure>
+
+<p>  在此处如有报错virtualenvwrapper_run_hook:12: 权限不够，解决方式请见<a target="_blank" rel="noopener" href="http://t.csdn.cn/PJpj2">这篇文章</a><del>不过按照我的流程应该不会有这个报错</del>。<br>  创建虚拟环境。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv MITMf -p /usr/bin/python2.7 #此处如果报错可以试试把最后那个python2.7换为python试试</span><br></pre></td></tr></table></figure>
+
+<p>  紧接着克隆MITMF的存储库。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/byt3bl33d3r/MITMf</span><br></pre></td></tr></table></figure>
+
+<p>  cd 进入目录，初始化并克隆 repos 子模块。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd MITMf &amp;&amp; git submodule init &amp;&amp; git submodule update --recursive</span><br></pre></td></tr></table></figure>
+
+<p>  安装依赖项。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip2 install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<p>  按照流程走此处会有报错TypeError: ‘encoding’ is an invalid keyword argument for this function，解决方法为编辑安装依赖文件vim requirements.txt，将第一个去掉，通过命令来安装  pip2 install NetfilterQueue。<br>  至此，MITMF中间人攻击框架安装成功。</p>
+<h2><span id="mitmf-kuang-jia-shi-yong-jian-yao-shuo-ming">MITMF框架使用简要说明</span><a href="#mitmf-kuang-jia-shi-yong-jian-yao-shuo-ming" class="header-anchor">#</a></h2><p>  每次打开termux，首先进入kali。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">startkali   </span><br><span class="line">su  #我个人习惯进入root进行操作</span><br></pre></td></tr></table></figure>
+
+<p>  然后获取 virtualenvwrapper.sh 脚本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /usr/local/bin/virtualenvwrapper.sh  #绕过此步命令无法被识别</span><br></pre></td></tr></table></figure>
+
+<p>  cd到你响应文件夹下，打开你建立的虚拟环境。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workon MITMf  #此处略过cd至文件夹的命令</span><br></pre></td></tr></table></figure>
+
+<p>  然后即可运行mitmf.py。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 mitmf.py --help</span><br></pre></td></tr></table></figure>
+
+<p>==Use wisely, young Padawan.==</p>
+<h2><span id="hou-ji">后记</span><a href="#hou-ji" class="header-anchor">#</a></h2><p>  以上即为本次学习的简要流程，<del>其实在安装过程中还是踩了很多坑</del>，尤其是在python2与python版本不适配与kali minimum自带的apt库python3只有python3.11版本的问题。<del>说到底安装过程最大的问题还是版本问题（悲）</del>。<br>  在之后的时间里可能随缘更新MITMf框架实战攻击学习或安卓逆向学习。<del>也可能摸了懒得更新了</del>。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/31/%E6%AD%A6%E6%B1%89%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%9E%B6%E6%9E%84%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0-%E6%8C%89%E7%9F%A5%E8%AF%86%E7%82%B9%E5%88%A0%E5%87%8F%E7%89%88/" rel="prev" title="武汉理工大学大数据模式与架构期末复习(按知识点删减版)">
+      <i class="fa fa-chevron-left"></i> 武汉理工大学大数据模式与架构期末复习(按知识点删减版)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Termux安装kali nethunter的全自动安装推荐与移动端部署中间人攻击框架MITMF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">自动化安装kali nethunter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">在kali nethunter部署MITMF中间人框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">MITMF框架使用简要说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.5.</span> <span class="nav-text">后记</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tr1ck"
+      src="/images/image1.jpg">
+  <p class="site-author-name" itemprop="name">Tr1ck</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tr1ck</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="true"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
